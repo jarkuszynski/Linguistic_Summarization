@@ -8,6 +8,12 @@ namespace CsvDataGetter.Model
 {
     public class GunInfo
     {
+        public GunInfo(string status, string type)
+        {
+            Status = status;
+            Type = type;
+        }
+
         public string Status { get; set; }
         public string Type { get; set; }
     }

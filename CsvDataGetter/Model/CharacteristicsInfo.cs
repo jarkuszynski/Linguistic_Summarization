@@ -8,6 +8,11 @@ namespace CsvDataGetter.Model
 {
     public class CharacteristicsInfo
     {
+        public CharacteristicsInfo(string info)
+        {
+            Info = info;
+        }
+
         public string Info { get; set; }
     }
 }
