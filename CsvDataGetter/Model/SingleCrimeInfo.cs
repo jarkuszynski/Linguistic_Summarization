@@ -18,7 +18,8 @@ namespace CsvDataGetter.Model
         public float Latitude { get; set; }
         public float Longitude { get; set; }
         public List<ParticipantInfo> ParticipantsInfo { get; set; }
-
+        public static DateTime BeginDate { get; set; }
+        public static DateTime EndDate { get; set; }
         public SingleCrimeInfo()
         {
             GunInfos = new List<GunInfo>();
@@ -57,6 +58,8 @@ namespace CsvDataGetter.Model
 
         private double GetPeriodFraction()
         {
+            DateTime smallestDateTime =  
+
             throw new NotImplementedException();
         }
 
@@ -77,13 +80,19 @@ namespace CsvDataGetter.Model
 
         private double GetAgeGroupFraction()
         {
+             
             throw new NotImplementedException();
         }
 
         private double GetAverageParticipantsAge()
         {
-            double 
-            throw new NotImplementedException();
+            double averageAge = 0.0;
+            foreach (ParticipantInfo participantInfo in ParticipantsInfo)
+            {
+                averageAge += 1.0 * participantInfo.Age;
+            }
+
+            return averageAge / ParticipantsInfo.Count;
         }
 
         private double GetKnownGunTypeFraction()

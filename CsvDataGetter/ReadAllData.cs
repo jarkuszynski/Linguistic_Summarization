@@ -105,6 +105,9 @@ namespace CsvDataGetter
                 }
             }
 
+            List<SingleCrimeInfo> sortedCollection = crimeInfoCollection.OrderBy(d => d.Date).ToList();
+            SingleCrimeInfo.BeginDate = sortedCollection.First().Date;
+            SingleCrimeInfo.EndDate = sortedCollection.Last().Date;
             return crimeInfoCollection;
         }
 
