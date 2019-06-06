@@ -98,7 +98,7 @@ namespace CsvDataGetter
 
                     for (int i = 0; i < partAge.Length; i++)
                     {
-                        simpleCrime.ParticipantsInfo.Add(new ParticipantInfo(partAge[i], partAgeGroup[i], partGender[i], partStatusList[i], partType[i]));
+                        simpleCrime.ParticipantsInfo.Add(new ParticipantInfo(int.Parse(partAge[i]), partAgeGroup[i], partGender[i], partStatusList[i], partType[i]));
                     }
 
                     crimeInfoCollection.Add(simpleCrime);
