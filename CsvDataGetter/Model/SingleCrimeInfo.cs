@@ -50,17 +50,15 @@ namespace CsvDataGetter.Model
                 case "Vertical":
                     return GetVerticalGeoSide();
                 case "Period":
-                    return GetPeriodFraction();
+                    return GetDatePeriodFraction();
                 default:
                     throw new ArgumentNullException("property name must be provided");
             }
         }
 
-        private double GetPeriodFraction()
+        private double GetDatePeriodFraction()
         {
-            DateTime smallestDateTime =  
-
-            throw new NotImplementedException();
+            return (Date - BeginDate).TotalDays;
         }
 
         private double GetVerticalGeoSide()
@@ -121,13 +119,12 @@ namespace CsvDataGetter.Model
             }
             double tangens = 1.0 * numberOfUnknownOrigin / numberOfKnownOrigin;
             double fraction = (Math.Atan(tangens) * (180 / Math.PI)) / 100;
-            if (fraction >= 0.9 || fraction <= 0.0)
+            if (fraction > 0.9 || fraction < 0.0)
             {
                 throw new ArgumentException("Error in calculating gender fraction");
             }
             //returns fraction between woman and man participants
             return fraction;
-            throw new NotImplementedException();
         }
 
         public double GetGenderFraction()

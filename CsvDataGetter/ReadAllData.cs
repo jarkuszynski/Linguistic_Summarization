@@ -120,7 +120,8 @@ namespace CsvDataGetter
             {
                 for (int i = 0; i < splittedData.Length; i++)
                 {
-                    splittedData[i] = splittedData[i].Substring(position);
+                    string toBeSearched = "::";
+                    splittedData[i] = splittedData[i].Substring(splittedData[i].IndexOf(toBeSearched) + toBeSearched.Length);
                 }
             }
 
