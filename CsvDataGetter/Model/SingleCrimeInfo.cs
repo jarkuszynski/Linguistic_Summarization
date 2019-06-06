@@ -8,6 +8,10 @@ namespace CsvDataGetter.Model
 {
     public class SingleCrimeInfo
     {
+        private const double _southEndCoord = 24.520833;
+        private const double _westEndCoord = -124.771667;
+        private const double _northEndCoord = 49.384358;
+        private const double _eastEndCoord = -66.946944;
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public string State { get; set; }
@@ -60,15 +64,21 @@ namespace CsvDataGetter.Model
         {
             return (Date - BeginDate).TotalDays;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Returns relative latitude from south side of USA - as bigger then norther</returns>
         private double GetVerticalGeoSide()
         {
-            throw new NotImplementedException();
+            return 1.0 * Latitude - _southEndCoord;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Returns relative longitude from east side of USA - as bigger then wester</returns>
         private double GetHorizontalGeoSide()
         {
-            throw new NotImplementedException();
+            return 1.0 * _eastEndCoord + Math.Abs(Longitude);
         }
 
         private double GetParticipantTypeFraction()

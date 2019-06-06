@@ -25,9 +25,9 @@ namespace Logic
          * 4. Przejscie do nastepnego podsumowania
          */
 
-        public void generateMixedSummarizations()
+        public List<SingleSummarizationObject> generateMixedSummarizationObjects()
         {
-            //
+            
         }
         
     }

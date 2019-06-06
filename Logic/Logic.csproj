@@ -44,6 +44,7 @@
     <Compile Include="FuzzySet.cs" />
     <Compile Include="LinguisticSummarization\Qualifier.cs" />
     <Compile Include="LinguisticSummarization\Quantifier.cs" />
+    <Compile Include="LinguisticSummarization\SingleSummarizationObject.cs" />
     <Compile Include="LinguisticSummarization\Summarizator.cs" />
     <Compile Include="LingusticSummarization.cs" />
     <Compile Include="MembershipFunctions\IMembershipFunction.cs" />
