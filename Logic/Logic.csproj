@@ -50,6 +50,10 @@
     <Compile Include="MembershipFunctions\IMembershipFunction.cs" />
     <Compile Include="MembershipFunctions\TrapezoidalMembershipFunction.cs" />
     <Compile Include="MembershipFunctions\TriangleMembershipFunction.cs" />
+    <Compile Include="Operations\ComplementOfFuzzySet.cs" />
+    <Compile Include="Operations\FuzzySetOperations.cs" />
+    <Compile Include="Operations\KernelOfFuzzySet.cs" />
+    <Compile Include="Operations\SupportOfFuzzySet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

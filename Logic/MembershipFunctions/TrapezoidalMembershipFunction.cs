@@ -47,5 +47,8 @@ namespace Logic.MembershipFunctions
                 return 0.0;
             }
         }
+
+        public double Cardinality => (Math.Abs(_a - _d) + Math.Abs(_c - _b)) / 2d;
+        public double Support => Math.Abs(_d - _a);
     }
 }

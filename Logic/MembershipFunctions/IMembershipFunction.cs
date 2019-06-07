@@ -10,5 +10,8 @@ namespace Logic.MembershipFunctions
     {
         double GetMembershipFunctionValue(double valueToCalc);
 
+        double Cardinality { get; }
+        double Support { get; }
+
     }
 }

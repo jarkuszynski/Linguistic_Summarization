@@ -10,7 +10,7 @@ namespace Logic.LinguisticSummarization
     public class Summarizator : FuzzySet
     {
         public string AttributeName { get; set; }
-        public Summarizator(string description, string attributeName, IMembershipFunction membershipFunction) : base(description, membershipFunction)
+        public Summarizator(string description, string attributeName, IMembershipFunction membershipFunction, double minValueOfColumn, double maxValueOfColumn) : base(description, membershipFunction, minValueOfColumn, maxValueOfColumn)
         {
             AttributeName = attributeName;
         }

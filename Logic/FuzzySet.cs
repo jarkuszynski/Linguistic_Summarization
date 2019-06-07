@@ -7,15 +7,23 @@ using Logic.MembershipFunctions;
 
 namespace Logic
 {
-    public abstract class FuzzySet
+    public class FuzzySet
     {
-        public FuzzySet(string description, IMembershipFunction membershipFunction)
+        public FuzzySet(string description, IMembershipFunction membershipFunction, double minValueOfColumn, double maxValueOfColumn)
         {
             Description = description;
             MembershipFunction = membershipFunction;
+            MinValueOfColumn = minValueOfColumn;
+            MaxValueOfColumn = maxValueOfColumn;
         }
+
+        public double MinValueOfColumn { get; set; }
+        public double MaxValueOfColumn { get; set; }
+        public double X => MaxValueOfColumn - MinValueOfColumn;
 
         public string Description { get; set; }
         public IMembershipFunction MembershipFunction { get; set; }
+
+        public double DegreeOfFuzziness() => MembershipFunction.Support / X;
     }
 }

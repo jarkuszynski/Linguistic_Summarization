@@ -11,7 +11,7 @@ namespace Logic.LinguisticSummarization
     {
         public QuantifierType Type { get; set; }
         
-        public Quantifier(string description, IMembershipFunction membershipFunction, QuantifierType type) : base(description, membershipFunction)
+        public Quantifier(string description, IMembershipFunction membershipFunction, QuantifierType type, double minValueOfColumn, double maxValueOfColumn) : base(description, membershipFunction, minValueOfColumn, maxValueOfColumn)
         {
             Type = type;
         }
