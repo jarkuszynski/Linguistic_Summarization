@@ -27,7 +27,7 @@ namespace Logic
 
         public List<SingleSummarizationObject> generateMixedSummarizationObjects()
         {
-            
+            throw new NotImplementedException();
         }
         
     }
