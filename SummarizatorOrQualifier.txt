@@ -1,0 +1,5 @@
+# description;attributeName;functionType;function_parameters
+# attrubuteToChoose: Number of Killed, Number of Injured, Gun status, Average Age, Age Group, Gender Fraction, Participant Type, Horizontal, Vertical, Period
+#function type to choose trian/trap
+#function params according to function type: trian a;m;b, trap a;b;c;d
+duzo;Number of Killed;trian;4;7;10
