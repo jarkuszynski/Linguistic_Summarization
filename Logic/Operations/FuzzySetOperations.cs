@@ -8,28 +8,28 @@ using Logic.LinguisticSummarization;
 
 namespace Logic.Operations
 {
-    public class FuzzySetOperations
+    public static class FuzzySetOperations
     {
-        public double OrOperator(double first, FuzzySet second, double valueToGetMembershipValue)
+        public static double OrOperator(double first, FuzzySet second, double valueToGetMembershipValue)
         {
             double secondMembershipValue =
                 second.MembershipFunction.GetMembershipFunctionValue(valueToGetMembershipValue);
             return Math.Max(first, secondMembershipValue);
         }
-        public double AndOperator(double first, FuzzySet second, double valueToGetMembershipValue)
+        public static double AndOperator(double first, FuzzySet second, double valueToGetMembershipValue)
         {
             double secondMembershipValue =
                 second.MembershipFunction.GetMembershipFunctionValue(valueToGetMembershipValue);
             return Math.Min(first, secondMembershipValue);
         }
 
-        public double PerformCalculationsBetweenGivenSummarizators(List<Summarizator> summarizatorsSet,
-            SingleCrimeInfo singleCrime, Operator oOperator)
+        public static double PerformCalculationsBetweenGivenSummarizators(List<Summarizator> summarizatorsSet,
+            SingleCrimeInfo singleCrime, OperationType oOperator)
         {
             List<double> membershipSummarizationValues = summarizatorsSet.Select(s =>
                     s.MembershipFunction.GetMembershipFunctionValue(singleCrime.GetAttributeValue(s.AttributeName)))
                 .ToList();
-            if (oOperator == Operator.And)
+            if (oOperator == OperationType.And)
             {
                 return membershipSummarizationValues.Min();
             }
@@ -38,11 +38,5 @@ namespace Logic.Operations
                 return membershipSummarizationValues.Max();
             }
         }
-    }
-
-    public enum Operator
-    {
-        Or,
-        And
     }
 }

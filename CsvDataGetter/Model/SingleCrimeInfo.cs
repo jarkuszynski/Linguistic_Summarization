@@ -191,6 +191,14 @@ namespace CsvDataGetter.Model
                     numberOfWoman++;
                 }
             }
+            if (numberOfMan == 0)
+            {
+                return 0.0;
+            }
+            else if ( numberOfWoman == 0)
+            {
+                return 0.9;
+            }
 
             double tangens = 1.0 * numberOfMan / numberOfWoman;
             double fraction = (Math.Atan(tangens) * (180 / Math.PI))/100;

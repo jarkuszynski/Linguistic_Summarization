@@ -50,6 +50,13 @@ namespace Logic.MembershipFunctions
             }
         }
         // TODO check if cardinality is properly understood
+        // TODO make longitude absolute -> properly counted Xmin And Xmax
+        // Make all T
+        // provide two quantifiers -> one for relative calculations, second for absolute calculations
+        // improve generating results strings 
+        // reading specifications for all summarizator etc from file
+        // saving results to txt file. 
+        // checkout if  I wg Yagera i  Wilbik.
         public double Cardinality => Math.Abs(_m - _a) / 2d;
         public double Support => Math.Abs(_m - _a);
     }

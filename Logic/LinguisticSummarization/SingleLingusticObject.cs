@@ -26,7 +26,7 @@ namespace Logic.LinguisticSummarization
         
         public string BuildResultSentence()
         {
-            StringBuilder stringBuilder = new StringBuilder(Qualifier.AttributeName);
+            StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("in crime summary");
             stringBuilder.Append(Quantifier.Description);
             for (int i = 0; i < Summarizators.Count; i++)
@@ -43,7 +43,10 @@ namespace Logic.LinguisticSummarization
                 }
 
             }
-            stringBuilder.Append(Qualifier.Description);
+            if (Qualifier != null)
+            {
+                stringBuilder.Append(Qualifier.Description);
+            }
 
             return stringBuilder.ToString();
 

@@ -182,7 +182,10 @@
     <Compile Include="Operations\FuzzySetProperties.cs" />
     <Compile Include="Operations\KernelOfFuzzySet.cs" />
     <Compile Include="Operations\SupportOfFuzzySet.cs" />
+    <Compile Include="OperationType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioOperations\AllTValues.cs" />
+    <Compile Include="ScenarioOperations\BuildScenarioSentence.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CsvDataGetter\CsvDataGetter.csproj">

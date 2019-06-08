@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CsvDataGetter.Model;
+using Logic.ScenarioOperations;
 using Logic.LinguisticSummarization;
 
 namespace Logic
@@ -25,8 +26,19 @@ namespace Logic
         public List<Qualifier> Qualifiers { get; set; }
         public List<Quantifier> Quantifiers { get; set; }
         public List<Summarizator> Summarizators { get; set; }
-        public List<SingleCrimeInfo> CrimesList { get; set; }
+        public static List<SingleCrimeInfo> CrimesList { get; set; }
         public List<SingleLingusticObject> AllSummarizationScenario { get; set; }
+        public static List<SingleCrimeInfo> data;
+        public List<string> results()
+        {
+            List<string> vs = new List<string>();
+            BuildScenarioSentence buildScenarioSentence = new BuildScenarioSentence();
+            foreach (var item in AllSummarizationScenario)
+            {
+                vs.Add(buildScenarioSentence.GetScenarioResult(item));
+            }
+            return vs;
+        }
 
         /*
          * 1. stworzenie pomieszanych algorytmow do obliczenia podsumowania
@@ -42,6 +54,19 @@ namespace Logic
         * jak będę wczytane wszystkie możliwe kombinacje, należy przeprowadzić operację obliczenia R
         * Następnie trzeba zaimplementować funkcje funkcje obliczające stopień prawdziwości
         */
+
+        public List<string> resultsFromScenaris ()
+        {
+            List<string> resultsString = new List<string>();
+            /*
+             * 1. bierze każde ze scenariuszy
+             * wrzuca je do funkcji obliczającej wartość scenariusza
+             * zwraca wynik
+             * łączy wynik z każdym scenariusze,
+             * tworzy listę ze zdania scenariuszy
+             */
+            return new List<string>();
+        }
 
         public void generateMixedLinqusticObjects()
         {
@@ -84,11 +109,7 @@ namespace Logic
             }
             return SummarizatorsCombinations;
         }
-        public enum OperationType
-        {
-            Or,
-            And
-        }
         
     }
+
 }

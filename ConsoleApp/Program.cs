@@ -25,8 +25,8 @@ namespace ConsoleApp
             List<Summarizator> summarizators = new List<Summarizator>();
             List<Qualifier> qualifiers = new List<Qualifier>();
             List<Quantifier> quantifiers = new List<Quantifier>();
-            summarizators.Add(new Summarizator("siema kurwa", "Number of Killed", new TriangleMembershipFunction(2, 7, 4), 0, 20));
-            summarizators.Add(new Summarizator("duzo rannych", "Number of Injured", new TrapezoidalMembershipFunction(2, 7, 9, 9), 0, 10));
+            summarizators.Add(new Summarizator("malo zabitych", "Number of Killed", new TriangleMembershipFunction(1, 7, 2), 0, 20));
+            summarizators.Add(new Summarizator("przewaga facetow", "Gender Fraction", new TrapezoidalMembershipFunction(0.0, 0.33, 0.43, 0.43), 0.45, 0.9));
 
 
             //private const double _southEndCoord = 24.520833;
@@ -35,11 +35,18 @@ namespace ConsoleApp
             //private const double _eastEndCoord = -66.946944;
 
             qualifiers.Add(new Qualifier("bardziej na polnocy", "Horizontal", new TriangleMembershipFunction(35, 49, 49), 23, 20));
-            qualifiers.Add(new Qualifier("bardziej na poludniu", "Vertical", new TrapezoidalMembershipFunction(-80.0, -110.0, -123.0, -123.0), -66, -124.0));
+            qualifiers.Add(new Qualifier("bardziej na poludniu", "Horizontal", new TriangleMembershipFunction(24, 35, 35), 23, 20));
+            //qualifiers.Add(new Qualifier("bardziej na poludniu", "Vertical", new TrapezoidalMembershipFunction(-80.0, -110.0, -123.0, -123.0), -66, -124.0));
 
-            quantifiers.Add(new Quantifier("malo kurwa", new TriangleMembershipFunction(1, 3, 2), Quantifier.QuantifierType.Relative, 0, 1));
+            quantifiers.Add(new Quantifier("duzo ze wszystkich ", new TriangleMembershipFunction(0, 3, 2), Quantifier.QuantifierType.Relative, 0, 1));
 
-            LingusticSummarization lingusticSummarization = new LingusticSummarization(new List<Qualifier>(), quantifiers, summarizators, example);
+            LingusticSummarization lingusticSummarization = new LingusticSummarization(qualifiers, quantifiers, summarizators, example);
+            List<string> d = lingusticSummarization.results();
+            foreach (var item in d)
+            {
+                Console.WriteLine(item);
+            }
+            Console.Read();
         }
     }
 }
