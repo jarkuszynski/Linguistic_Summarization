@@ -83,13 +83,52 @@ namespace CsvDataGetter.Model
 
         private double GetParticipantTypeFraction()
         {
-            throw new NotImplementedException();
+            int numberOfVictims = 0;
+            int numberOfSubjectSuspects = 0;
+            foreach (ParticipantInfo participant in ParticipantsInfo)
+            {
+                if (participant.Type == "Victim")
+                {
+                    numberOfVictims++;
+                }
+                else
+                {
+                    numberOfSubjectSuspects++;
+                }
+            }
+            double tangens = 1.0 * numberOfVictims / numberOfSubjectSuspects;
+            double fraction = (Math.Atan(tangens) * (180 / Math.PI)) / 100;
+            if (fraction > 0.9 || fraction < 0.0)
+            {
+                throw new ArgumentException("Error in calculating participant type fraction");
+            }
+            //returns fraction between woman and man participants	
+            return fraction;
         }
 
         private double GetAgeGroupFraction()
         {
-             
-            throw new NotImplementedException();
+            int numberOfMatureParticipants = 0;
+            int numberOfNonMatureParticipants = 0;
+            foreach (ParticipantInfo participant in ParticipantsInfo)
+            {
+                if (participant.AgeGroup == "Adult 18+")
+                {
+                    numberOfMatureParticipants++;
+                }
+                else
+                {
+                    numberOfNonMatureParticipants++;
+                }
+            }
+            double tangens = 1.0 * numberOfMatureParticipants / numberOfNonMatureParticipants;
+            double fraction = (Math.Atan(tangens) * (180 / Math.PI)) / 100;
+            if (fraction > 0.9 || fraction < 0.0)
+            {
+                throw new ArgumentException("Error in calculating participant type fraction");
+            }
+            //returns fraction between woman and man participants	
+            return fraction;
         }
 
         private double GetAverageParticipantsAge()
