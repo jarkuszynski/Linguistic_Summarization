@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Logic.Operations
 {
-    public class SupportOfFuzzySet : FuzzySetProperties
+    public class AlphaCutOfFuzzySet : FuzzySetProperties
     {
-        public SupportOfFuzzySet(FuzzySet single) : base(single)
+        public AlphaCutOfFuzzySet(FuzzySet single) : base(single)
         {
         }
 

@@ -10,13 +10,19 @@ namespace Logic
 {
     public class LingusticSummarization
     {
+        public LingusticSummarization(List<Qualifier> qualifiers, List<Quantifier> quantifiers, List<Summarizator> summarizators, List<SingleCrimeInfo> crimesList)
+        {
+            Qualifiers = qualifiers;
+            Quantifiers = quantifiers;
+            Summarizators = summarizators;
+            CrimesList = crimesList;
+        }
+
         public List<Qualifier> Qualifiers { get; set; }
         public List<Quantifier> Quantifiers { get; set; }
         public List<Summarizator> Summarizators { get; set; }
-        public List<string> chosenPropretiesToSummarize { get; set; }
-        public bool IsAbsolute { get; set; }
         public List<SingleCrimeInfo> CrimesList { get; set; }
-        
+        public List<SingleSummarizationObject> AllSummarizationScenario { get; set; }
 
         /*
          * 1. stworzenie pomieszanych algorytmow do obliczenia podsumowania
@@ -25,8 +31,16 @@ namespace Logic
          * 4. Przejscie do nastepnego podsumowania
          */
 
+        /*
+        * Na podstawie odczytanych z pliku pól kwantyfikatorów, kwalifikatorów i sumaryzatorów stworzyć ich ogólną listę do programu
+        * W programie przekazać listę do klasy generującej jej kombinację - dwa warianty, z kwalifiktorami i bez nich
+        * Wszystkie możliwe kombinacje. 
+        * jak będę wczytane wszystkie możliwe kombinacje, należy przeprowadzić operację obliczenia R
+        * Następnie trzeba zaimplementować funkcje funkcje obliczające stopień prawdziwości
+        */
         public List<SingleSummarizationObject> generateMixedSummarizationObjects()
         {
+            //zmiksowanie wszystkich list ze sobą. Raz z kwalifikatorami, raz bez 
             throw new NotImplementedException();
         }
         

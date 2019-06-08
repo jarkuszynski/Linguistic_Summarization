@@ -46,12 +46,16 @@
     <Compile Include="LinguisticSummarization\Quantifier.cs" />
     <Compile Include="LinguisticSummarization\SingleSummarizationObject.cs" />
     <Compile Include="LinguisticSummarization\Summarizator.cs" />
+    <Compile Include="LinguisticSummarization\TCalculator.cs" />
+    <Compile Include="LinguisticSummarization\TValueList.cs" />
     <Compile Include="LingusticSummarization.cs" />
     <Compile Include="MembershipFunctions\IMembershipFunction.cs" />
     <Compile Include="MembershipFunctions\TrapezoidalMembershipFunction.cs" />
     <Compile Include="MembershipFunctions\TriangleMembershipFunction.cs" />
+    <Compile Include="Operations\AlphaCutOfFuzzySet.cs" />
     <Compile Include="Operations\ComplementOfFuzzySet.cs" />
     <Compile Include="Operations\FuzzySetOperations.cs" />
+    <Compile Include="Operations\FuzzySetProperties.cs" />
     <Compile Include="Operations\KernelOfFuzzySet.cs" />
     <Compile Include="Operations\SupportOfFuzzySet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

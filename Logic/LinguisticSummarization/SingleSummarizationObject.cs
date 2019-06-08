@@ -8,9 +8,9 @@ namespace Logic.LinguisticSummarization
 {
     public class SingleSummarizationObject
     {
-        public SingleSummarizationObject(Summarizator summarizator, Quantifier quantifier, string attributeName, Qualifier qualifier )
+        public SingleSummarizationObject(List<Summarizator> summarizators, Quantifier quantifier, string attributeName, Qualifier qualifier )
         {
-            Summarizator = summarizator;
+            Summarizators = summarizators;
             Qualifier = qualifier;
             Quantifier = quantifier;
             AttributeName = attributeName;
@@ -18,7 +18,7 @@ namespace Logic.LinguisticSummarization
             
         }
         public bool isAbsolute { get; set; }
-        public Summarizator Summarizator { get; set; }
+        public List<Summarizator> Summarizators { get; set; }
         public Qualifier Qualifier { get; set; }
         public Quantifier Quantifier { get; set; }
         public string AttributeName { get; set; }
