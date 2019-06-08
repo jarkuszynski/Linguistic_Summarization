@@ -16,13 +16,17 @@ namespace Logic
             Quantifiers = quantifiers;
             Summarizators = summarizators;
             CrimesList = crimesList;
+            AllSummarizationScenario = new List<SingleLingusticObject>();
+            generateMixedLinqusticObjects();
+
         }
+        public OperationType operationType { get; set; }
 
         public List<Qualifier> Qualifiers { get; set; }
         public List<Quantifier> Quantifiers { get; set; }
         public List<Summarizator> Summarizators { get; set; }
         public List<SingleCrimeInfo> CrimesList { get; set; }
-        public List<SingleSummarizationObject> AllSummarizationScenario { get; set; }
+        public List<SingleLingusticObject> AllSummarizationScenario { get; set; }
 
         /*
          * 1. stworzenie pomieszanych algorytmow do obliczenia podsumowania
@@ -38,10 +42,52 @@ namespace Logic
         * jak będę wczytane wszystkie możliwe kombinacje, należy przeprowadzić operację obliczenia R
         * Następnie trzeba zaimplementować funkcje funkcje obliczające stopień prawdziwości
         */
-        public List<SingleSummarizationObject> generateMixedSummarizationObjects()
+
+        public void generateMixedLinqusticObjects()
         {
             //zmiksowanie wszystkich list ze sobą. Raz z kwalifikatorami, raz bez 
-            throw new NotImplementedException();
+            List<List<Summarizator>> summarizatorCombinations = new List<List<Summarizator>>();
+            List<SingleLingusticObject> allPossibleSingleLingusticObjects = new List<SingleLingusticObject>();
+            summarizatorCombinations = allPossibleSummarizatorCombinations();
+            List<SingleLingusticObject> singleSummarizationObjects = new List<SingleLingusticObject>();
+            foreach (Quantifier quantifier in Quantifiers)
+            {
+                if (Qualifiers.Count >= 1)
+                {
+                    foreach (Qualifier qualifier in Qualifiers)
+                    {
+                        foreach (List<Summarizator> summarizators in summarizatorCombinations)
+                        {
+                            allPossibleSingleLingusticObjects.Add(new SingleLingusticObject(summarizators, quantifier, qualifier, operationType));
+                        }
+                    }
+                }
+                
+            foreach (List<Summarizator> summarizators in summarizatorCombinations)
+            {
+                allPossibleSingleLingusticObjects.Add(new SingleLingusticObject(summarizators, quantifier, null, operationType));
+            }
+                
+            }
+            AllSummarizationScenario = allPossibleSingleLingusticObjects;
+        }
+        public List<List<Summarizator>> allPossibleSummarizatorCombinations()
+        {
+            List<List<Summarizator>> SummarizatorsCombinations = new List<List<Summarizator>>();
+            for (int i = 1; i <= Summarizators.Count; i++)
+            {
+                Combinatorics.Collections.Combinations<Summarizator> c = new Combinatorics.Collections.Combinations<Summarizator>(Summarizators, i);
+                foreach (List<Summarizator> v in c)
+                {
+                    SummarizatorsCombinations.Add(v);
+                }
+            }
+            return SummarizatorsCombinations;
+        }
+        public enum OperationType
+        {
+            Or,
+            And
         }
         
     }

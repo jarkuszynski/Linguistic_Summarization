@@ -8,7 +8,7 @@ namespace Logic.LinguisticSummarization
 {
     public class TCalculator
     {
-        public TValueList CalculateAllTValues(SingleSummarizationObject singleSummarizationObject)
+        public TValueList CalculateAllTValues(SingleLingusticObject singleSummarizationObject)
         {
             //tutaj wszystkie miary do zaimplementowania
             throw new NotImplementedException();
