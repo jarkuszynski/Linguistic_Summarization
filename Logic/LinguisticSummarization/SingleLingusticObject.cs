@@ -33,18 +33,22 @@ namespace Logic.LinguisticSummarization
             { 
                 if(i == Summarizators.Count - 1)
                 {
+                    stringBuilder.Append(' ');
                     stringBuilder.Append(Summarizators[i].Description);
 
                 }
                 else
                 {
+                    stringBuilder.Append(' ');
                     stringBuilder.Append(Summarizators[i].Description);
+                    stringBuilder.Append(' ');
                     stringBuilder.Append(operation.ToString());
                 }
 
             }
             if (Qualifier != null)
             {
+                stringBuilder.Append(' ');
                 stringBuilder.Append(Qualifier.Description);
             }
 

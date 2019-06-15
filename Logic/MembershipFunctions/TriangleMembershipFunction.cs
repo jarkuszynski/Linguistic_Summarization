@@ -57,7 +57,7 @@ namespace Logic.MembershipFunctions
         // reading specifications for all summarizator etc from file
         // saving results to txt file. 
         // checkout if  I wg Yagera i  Wilbik.
-        public double Cardinality => Math.Abs(_m - _a) / 2d;
-        public double Support => Math.Abs(_m - _a);
+        public double Cardinality => Math.Abs(_b - _a) / 2d;
+        public double Support => Math.Abs(_b - _a);
     }
 }

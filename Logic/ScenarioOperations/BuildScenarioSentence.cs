@@ -73,7 +73,8 @@ namespace Logic.ScenarioOperations
                 numerator += Math.Min(bestValue, qualifierValue);
                 denumertor += qualifierValue;
             }
-            double r = numerator/ denumertor;
+            double r;
+            r = numerator / denumertor;
             return singleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r);
         }
 
@@ -127,6 +128,6 @@ namespace Logic.ScenarioOperations
             throw new NotImplementedException();
         }
 
-       
+
     }
 }

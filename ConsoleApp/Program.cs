@@ -38,7 +38,7 @@ namespace ConsoleApp
             qualifiers.Add(new Qualifier("bardziej na poludniu", "Horizontal", new TriangleMembershipFunction(24, 35, 35), 23, 20));
             //qualifiers.Add(new Qualifier("bardziej na poludniu", "Vertical", new TrapezoidalMembershipFunction(-80.0, -110.0, -123.0, -123.0), -66, -124.0));
 
-            quantifiers.Add(new Quantifier("duzo ze wszystkich ", new TriangleMembershipFunction(0, 3, 2), Quantifier.QuantifierType.Relative, 0, 1));
+            quantifiers.Add(new Quantifier("duzo ze wszystkich ", new TriangleMembershipFunction(0, 3, 2), Quantifier.QuantifierType.Absolute, 0, 1));
 
             LingusticSummarization lingusticSummarization = new LingusticSummarization(qualifiers, quantifiers, summarizators, example);
             List<string> d = lingusticSummarization.results();

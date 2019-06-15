@@ -56,7 +56,7 @@ namespace CsvDataGetter.Model
                 case "Period":
                     return GetDatePeriodFraction();
                 default:
-                    throw new ArgumentNullException("property name must be provided");
+                    throw new ArgumentNullException("property name must be provided or given is invalid");
             }
         }
 
@@ -96,6 +96,14 @@ namespace CsvDataGetter.Model
                     numberOfSubjectSuspects++;
                 }
             }
+            if (numberOfVictims == 0)
+            {
+                return 0.0;
+            }
+            else if (numberOfSubjectSuspects == 0)
+            {
+                return 0.9;
+            }
             double tangens = 1.0 * numberOfVictims / numberOfSubjectSuspects;
             double fraction = (Math.Atan(tangens) * (180 / Math.PI)) / 100;
             if (fraction > 0.9 || fraction < 0.0)
@@ -121,6 +129,14 @@ namespace CsvDataGetter.Model
                     numberOfNonMatureParticipants++;
                 }
             }
+            if (numberOfMatureParticipants == 0)
+            {
+                return 0.0;
+            }
+            else if (numberOfNonMatureParticipants == 0)
+            {
+                return 0.9;
+            }
             double tangens = 1.0 * numberOfMatureParticipants / numberOfNonMatureParticipants;
             double fraction = (Math.Atan(tangens) * (180 / Math.PI)) / 100;
             if (fraction > 0.9 || fraction < 0.0)
@@ -138,7 +154,10 @@ namespace CsvDataGetter.Model
             {
                 averageAge += 1.0 * participantInfo.Age;
             }
-
+            if (ParticipantsInfo.Count == 0)
+            {
+                throw new ArgumentException("no participians in cell");
+            }
             return averageAge / ParticipantsInfo.Count;
         }
 
@@ -146,7 +165,7 @@ namespace CsvDataGetter.Model
         {
             throw new NotImplementedException();
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -165,6 +184,14 @@ namespace CsvDataGetter.Model
                 {
                     numberOfKnownOrigin++;
                 }
+            }
+            if (numberOfKnownOrigin == 0)
+            {
+                return 0.9;
+            }
+            else if (numberOfUnknownOrigin == 0)
+            {
+                return 0.0;
             }
             double tangens = 1.0 * numberOfUnknownOrigin / numberOfKnownOrigin;
             double fraction = (Math.Atan(tangens) * (180 / Math.PI)) / 100;
@@ -195,13 +222,13 @@ namespace CsvDataGetter.Model
             {
                 return 0.0;
             }
-            else if ( numberOfWoman == 0)
+            else if (numberOfWoman == 0)
             {
                 return 0.9;
             }
 
             double tangens = 1.0 * numberOfMan / numberOfWoman;
-            double fraction = (Math.Atan(tangens) * (180 / Math.PI))/100;
+            double fraction = (Math.Atan(tangens) * (180 / Math.PI)) / 100;
             if (fraction >= 0.9 || fraction <= 0.0)
             {
                 throw new ArgumentException("Error in calculating gender fraction");
