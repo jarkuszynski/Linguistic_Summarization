@@ -11,7 +11,7 @@ namespace CsvDataGetter
 {
     public class CrimeInfoDBContext
     {
-        public void OpenConnection()
+        public DataTable OpenConnection()
         {
             string workingDirectory = Environment.CurrentDirectory;
             string filepath = Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\ksr.db";
@@ -26,6 +26,7 @@ namespace CsvDataGetter
                 dt.Load(sdr);
                 sdr.Close();
                 myConnection.Close();
+                return dt;
             }
         }
     }
