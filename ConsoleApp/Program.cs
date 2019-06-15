@@ -25,6 +25,7 @@ namespace ConsoleApp
             List<Summarizator> summarizators = new List<Summarizator>();
             List<Qualifier> qualifiers = new List<Qualifier>();
             List<Quantifier> quantifiers = new List<Quantifier>();
+            SentenceTuple sentenceTuple = SentenceElementsFileReader.getSentenceElementsFromFile();
             summarizators.Add(new Summarizator("malo zabitych", "Number of Killed", new TriangleMembershipFunction(1, 7, 2), 0, 20));
             summarizators.Add(new Summarizator("przewaga facetow", "Gender Fraction", new TrapezoidalMembershipFunction(0.0, 0.33, 0.43, 0.43), 0.45, 0.9));
 
@@ -40,7 +41,7 @@ namespace ConsoleApp
 
             quantifiers.Add(new Quantifier("duzo ze wszystkich ", new TriangleMembershipFunction(0, 3, 2), Quantifier.QuantifierType.Absolute, 0, 1));
 
-            LingusticSummarization lingusticSummarization = new LingusticSummarization(qualifiers, quantifiers, summarizators, example);
+            LingusticSummarization lingusticSummarization = new LingusticSummarization(sentenceTuple.Qualifiers, sentenceTuple.Quantifiers, sentenceTuple.Summarizators, example);
             List<string> d = lingusticSummarization.results();
             foreach (var item in d)
             {

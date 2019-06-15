@@ -1,5 +1,10 @@
-# description;attributeName;functionType;function_parameters
+# description;attributeName;functionType;function_parameters;minValue;maxValue
 # attrubuteToChoose: Number of Killed, Number of Injured, Gun status, Average Age, Age Group, Gender Fraction, Participant Type, Horizontal, Vertical, Period
 #function type to choose trian/trap
 #function params according to function type: trian a;m;b, trap a;b;c;d
-duzo;Number of Killed;trian;4;7;10
+summarizators;and
+duzo;Number of Killed;trap;1,2,3,4;1;3
+qualifiers
+na polnocy;Vertical;trian;1,3,2;1;3
+quantifiers;Absolute
+duzo ze wszystkich;nan;trian;3,5,4;0;100

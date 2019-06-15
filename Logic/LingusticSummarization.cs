@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CsvDataGetter.Model;
 using Logic.ScenarioOperations;
 using Logic.LinguisticSummarization;
+using CsvDataGetter;
 
 namespace Logic
 {

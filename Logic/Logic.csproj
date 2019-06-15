@@ -36,6 +36,7 @@
     <Reference Include="Combinatorics, Version=1.1.0.19, Culture=neutral, PublicKeyToken=d5738f21cd5d2f66, processorArchitecture=MSIL">
       <HintPath>..\packages\Combinatorics.1.1.0.19\lib\netstandard1.2\Combinatorics.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
       <Private>True</Private>
@@ -191,6 +192,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioOperations\AllTValues.cs" />
     <Compile Include="ScenarioOperations\BuildScenarioSentence.cs" />
+    <Compile Include="SentenceElementsFileReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CsvDataGetter\CsvDataGetter.csproj">
