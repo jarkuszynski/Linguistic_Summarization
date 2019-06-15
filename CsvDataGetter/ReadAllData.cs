@@ -12,6 +12,8 @@ namespace CsvDataGetter
     {
         public static List<SingleCrimeInfo> ReadData(string filePath)
         {
+            CrimeInfoDBContext dBContext = new CrimeInfoDBContext();
+            dBContext.OpenConnection();
             List<SingleCrimeInfo> crimeInfoCollection = new List<SingleCrimeInfo>();
             using (TextFieldParser csvParser = new TextFieldParser(filePath))
             {
