@@ -13,40 +13,62 @@ namespace Logic.ScenarioOperations
     {
         private List<double> _summarizationResults = new List<double>();
         private List<double> _qualifierResults = new List<double>();
+        private SingleLingusticObject singleLingusticObject;
 
-        public BuildScenarioSentence()
+        public BuildScenarioSentence(SingleLingusticObject singleObject)
         {
+            singleLingusticObject = singleObject;
         }
 
-        public string GetScenarioResult(SingleLingusticObject singleLingusticObject)
+        public string GetScenarioResult()
         {
-            return singleLingusticObject.BuildResultSentence() + CalculateAllSummarizationValues(singleLingusticObject);
+            AllTValues allTResults = CalculateAllSummarizationValues();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(singleLingusticObject.BuildResultSentence() + " ");
+            stringBuilder.Append("[T1: " + allTResults.T1 + "] ");
+            stringBuilder.Append("[T2: " + allTResults.T2 + "] ");
+            stringBuilder.Append("[T3: " + allTResults.T3 + "] ");
+            stringBuilder.Append("[T4: " + allTResults.T4 + "] ");
+            stringBuilder.Append("[T5: " + allTResults.T5 + "] ");
+            stringBuilder.Append("[T1T5: " + allTResults.T1T5 + "] ");
+            stringBuilder.Append("[T6: " + allTResults.T6 + "] ");
+            stringBuilder.Append("[T7: " + allTResults.T7 + "] ");
+            stringBuilder.Append("[T8: " + allTResults.T8 + "] ");
+            if (singleLingusticObject.Qualifier != null)
+            {
+                stringBuilder.Append("[T9: " + allTResults.T9 + "] ");
+                stringBuilder.Append("[T10: " + allTResults.T10 + "] ");
+                stringBuilder.Append("[T11: " + allTResults.T11 + "] ");
+            }
+            stringBuilder.Append("[T1T11: " + allTResults.T1T11 + "] ");
+
+            return stringBuilder.ToString();
         }
-        public AllTValues CalculateAllSummarizationValues(SingleLingusticObject singleLingusticObject)
+        public AllTValues CalculateAllSummarizationValues()
         {
             AllTValues allTValues = new AllTValues();
-            allTValues.T1 = CalculateT1(singleLingusticObject);
-            allTValues.T2 = CalculateT2(singleLingusticObject);
-            allTValues.T3 = CalculateT3(singleLingusticObject);
-            allTValues.T4 = CalculateT4(singleLingusticObject, allTValues.T3);
-            allTValues.T5 = CalculateT5(singleLingusticObject);
+            allTValues.T1 = CalculateT1();
+            allTValues.T2 = CalculateT2();
+            allTValues.T3 = CalculateT3();
+            allTValues.T4 = CalculateT4(allTValues.T3);
+            allTValues.T5 = CalculateT5();
             allTValues.T1T5 = CalculateT1T5(allTValues);
-            allTValues.T6 = CalculateT6(singleLingusticObject);
-            allTValues.T7 = CalculateT7(singleLingusticObject);
-            allTValues.T8 = CalculateT8(singleLingusticObject);
-            allTValues.T9 = CalculateT9(singleLingusticObject);
-            allTValues.T10 = CalculateT10(singleLingusticObject);
-            allTValues.T11 = CalculateT11(singleLingusticObject);
+            allTValues.T6 = CalculateT6();
+            allTValues.T7 = CalculateT7();
+            allTValues.T8 = CalculateT8();
+            allTValues.T9 = CalculateT9();
+            allTValues.T10 = CalculateT10();
+            allTValues.T11 = CalculateT11();
             allTValues.T1T11 = CalculateT1T11(allTValues);
             return allTValues;
 
         }
 
-        private double CalculateT1(SingleLingusticObject singleLingusticObject)
+        private double CalculateT1()
         {
-            return singleLingusticObject.isAbsolute == true ? CalculateT1AbsoluteSummarization(singleLingusticObject) : CalculateT1RelativeSummarization(singleLingusticObject);
+            return singleLingusticObject.isAbsolute ? CalculateT1AbsoluteSummarization() : CalculateT1RelativeSummarization();
         }
-        public double CalculateT1AbsoluteSummarization(SingleLingusticObject singleLingusticObject)
+        public double CalculateT1AbsoluteSummarization()
         {
             double fullSum = 0.0;
             OperationType operation = singleLingusticObject.operation;
@@ -61,7 +83,7 @@ namespace Logic.ScenarioOperations
                 singleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r) :
                 singleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r / LingusticSummarization.CrimesList.Count);
         }
-        public double CalculateT1RelativeSummarization(SingleLingusticObject singleLingusticObject)
+        public double CalculateT1RelativeSummarization()
         {
             double numerator = 0.0;
             double denumertor = 0.0;
@@ -81,7 +103,7 @@ namespace Logic.ScenarioOperations
             return singleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r);
         }
 
-        private double CalculateT2(SingleLingusticObject singleLingusticObject)
+        private double CalculateT2()
         {
             double result = 1.0;
             foreach (var summarizer in singleLingusticObject.Summarizators)
@@ -91,7 +113,7 @@ namespace Logic.ScenarioOperations
             return 1.0 - Math.Pow(result, 1.0 / singleLingusticObject.Summarizators.Count);
         }
 
-        private double CalculateT3(SingleLingusticObject singleLingusticObject)
+        private double CalculateT3()
         {
             if (singleLingusticObject.Qualifier != null)
             {
@@ -108,7 +130,7 @@ namespace Logic.ScenarioOperations
             }
         }
 
-        private double CalculateT4(SingleLingusticObject singleLingusticObject, double t3)
+        private double CalculateT4(double t3)
         {
             double resultS = 1.0;
             foreach (var summarizer in singleLingusticObject.Summarizators)
@@ -123,7 +145,7 @@ namespace Logic.ScenarioOperations
             return Math.Abs(resultS - t3);
         }
 
-        private double CalculateT5(SingleLingusticObject singleLingusticObject)
+        private double CalculateT5()
         {
             return 2.0 * Math.Pow(1.0 / 2.0, singleLingusticObject.Summarizators.Count);
         }
@@ -134,7 +156,7 @@ namespace Logic.ScenarioOperations
                             0.2 * allTValues.T5;
         }
 
-        private double CalculateT6(SingleLingusticObject singleLingusticObject)
+        private double CalculateT6()
         {
             double resultXq = 1.0;
             if (singleLingusticObject.Quantifier.IsAbsolute)
@@ -144,7 +166,7 @@ namespace Logic.ScenarioOperations
 
         }
 
-        private double CalculateT7(SingleLingusticObject singleLingusticObject)
+        private double CalculateT7()
         {
             double resultXq = 1.0;
             if (singleLingusticObject.Quantifier.IsAbsolute)
@@ -153,7 +175,7 @@ namespace Logic.ScenarioOperations
             return 1.0 - (singleLingusticObject.Quantifier.MembershipFunction.Cardinality / resultXq);
         }
 
-        private double CalculateT8(SingleLingusticObject singleLingusticObject)
+        private double CalculateT8()
         {
             double resultS = 1.0;
             foreach (var summarizer in singleLingusticObject.Summarizators)
@@ -163,29 +185,31 @@ namespace Logic.ScenarioOperations
             return 1.0 - Math.Pow(resultS, 1.0 / singleLingusticObject.Summarizators.Count);
         }
 
-        private double CalculateT9(SingleLingusticObject singleLingusticObject)
+        private double CalculateT9()
         {
             double resultS = 1.0;
             if (singleLingusticObject.Qualifier != null)
             {
-                resultS *= singleLingusticObject.Qualifier.DegreeOfFuzziness();
+                resultS = singleLingusticObject.Qualifier.DegreeOfFuzziness();
             }
             return 1.0 - Math.Pow(resultS, 1.0 / singleLingusticObject.Summarizators.Count);
         }
 
-        private double CalculateT10(SingleLingusticObject singleLingusticObject)
+        private double CalculateT10()
         {
             double resultS = 1.0;
             if (singleLingusticObject.Qualifier != null)
             {
-                resultS *= singleLingusticObject.Qualifier.MembershipFunction.Cardinality / singleLingusticObject.Qualifier.X;
+                resultS = singleLingusticObject.Qualifier.MembershipFunction.Cardinality / singleLingusticObject.Qualifier.X;
             }
             return 1.0 - resultS;
         }
 
-        private double CalculateT11(SingleLingusticObject singleLingusticObject)
+        private double CalculateT11()
         {
-            return 2.0 * Math.Pow(1.0 / 2.0, 1.0);
+            if(singleLingusticObject.Qualifier != null)
+                return 2.0 * Math.Pow(1.0 / 2.0, 1.0);
+            return 0.0;
         }
 
         private double CalculateT1T11(AllTValues allTValues)

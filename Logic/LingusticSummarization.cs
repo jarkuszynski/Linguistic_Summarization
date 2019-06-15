@@ -32,10 +32,10 @@ namespace Logic
         public List<string> results()
         {
             List<string> vs = new List<string>();
-            BuildScenarioSentence buildScenarioSentence = new BuildScenarioSentence();
             foreach (var item in AllSummarizationScenario)
             {
-                vs.Add(buildScenarioSentence.GetScenarioResult(item));
+                BuildScenarioSentence buildScenarioSentence = new BuildScenarioSentence(item);
+                vs.Add(buildScenarioSentence.GetScenarioResult());
             }
             return vs;
         }
