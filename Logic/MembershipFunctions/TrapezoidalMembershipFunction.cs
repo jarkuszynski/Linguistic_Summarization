@@ -23,6 +23,10 @@ namespace Logic.MembershipFunctions
 
         public double GetMembershipFunctionValue(double valueToCalc)
         {
+            if (valueToCalc >= 5)
+            {
+                Console.WriteLine(valueToCalc);
+            }
             if (valueToCalc < _a || valueToCalc > _d)
             {
                 return 0.0;
@@ -30,6 +34,7 @@ namespace Logic.MembershipFunctions
 
             else if (_a <= valueToCalc && valueToCalc <= _b)
             {
+                Console.WriteLine((1.0 * (valueToCalc - _a) / (_b - _a)) + " " + valueToCalc);
                 return (1.0 * (valueToCalc - _a) / (_b - _a));
             }
 
@@ -38,8 +43,9 @@ namespace Logic.MembershipFunctions
                 return 1.0;
             }
 
-            else if (_c <= valueToCalc && valueToCalc <= _d)
+            else if (_c >= valueToCalc && valueToCalc <= _d)
             {
+                Console.WriteLine((1.0 * (_d - valueToCalc) / (_d - _c)) + " " + valueToCalc);
                 return (1.0 * (_d - valueToCalc) / (_d - _c));
             }
             else
