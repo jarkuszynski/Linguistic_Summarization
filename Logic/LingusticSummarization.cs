@@ -41,31 +41,9 @@ namespace Logic
             return vs;
         }
 
-        /*
-         * 1. stworzenie pomieszanych algorytmow do obliczenia podsumowania
-         * 2. W każdym z algorytmów do obliczenia T1[r]
-         * 3. Wygenerowanie podsumowania na podstawie zmiennych pol ( tych callych sumaryzatorow )
-         * 4. Przejscie do nastepnego podsumowania
-         */
-
-        /*
-        * Na podstawie odczytanych z pliku pól kwantyfikatorów, kwalifikatorów i sumaryzatorów stworzyć ich ogólną listę do programu
-        * W programie przekazać listę do klasy generującej jej kombinację - dwa warianty, z kwalifiktorami i bez nich
-        * Wszystkie możliwe kombinacje. 
-        * jak będę wczytane wszystkie możliwe kombinacje, należy przeprowadzić operację obliczenia R
-        * Następnie trzeba zaimplementować funkcje funkcje obliczające stopień prawdziwości
-        */
-
         public List<string> resultsFromScenaris ()
         {
             List<string> resultsString = new List<string>();
-            /*
-             * 1. bierze każde ze scenariuszy
-             * wrzuca je do funkcji obliczającej wartość scenariusza
-             * zwraca wynik
-             * łączy wynik z każdym scenariusze,
-             * tworzy listę ze zdania scenariuszy
-             */
             return new List<string>();
         }
 

@@ -16,7 +16,7 @@ namespace Logic.MembershipFunctions
         {
             _a = a;
             _b = b;
-            if(m >= a && m <= b)
+            if (m >= a && m <= b)
             {
                 _m = m;
             }
@@ -24,6 +24,7 @@ namespace Logic.MembershipFunctions
             {
                 throw new ArgumentException("m must be between range of (a,b)");
             }
+            Name = $"trapezoidal({_a}, {_b}, {_m})";
         }
 
         public double GetMembershipFunctionValue(double valueToCalc)
@@ -59,5 +60,7 @@ namespace Logic.MembershipFunctions
         // checkout if  I wg Yagera i  Wilbik.
         public double Cardinality => Math.Abs(_b - _a) / 2d;
         public double Support => Math.Abs(_b - _a);
+
+        public string Name { get; }
     }
 }

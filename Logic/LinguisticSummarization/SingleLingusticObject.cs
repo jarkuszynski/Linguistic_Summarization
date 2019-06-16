@@ -27,8 +27,15 @@ namespace Logic.LinguisticSummarization
         public string BuildResultSentence()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append("in crime summary");
+            stringBuilder.Append("in crime summary ");
             stringBuilder.Append(Quantifier.Description);
+            if (Qualifier != null)
+            {
+                stringBuilder.Append(" being/having ");
+                stringBuilder.Append(' ');
+                stringBuilder.Append(Qualifier.Description);
+            }
+            stringBuilder.Append(" are/have");
             for (int i = 0; i < Summarizators.Count; i++)
             { 
                 if(i == Summarizators.Count - 1)
@@ -45,11 +52,6 @@ namespace Logic.LinguisticSummarization
                     stringBuilder.Append(operation.ToString());
                 }
 
-            }
-            if (Qualifier != null)
-            {
-                stringBuilder.Append(' ');
-                stringBuilder.Append(Qualifier.Description);
             }
 
             return stringBuilder.ToString();

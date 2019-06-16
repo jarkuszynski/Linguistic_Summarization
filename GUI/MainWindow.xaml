@@ -1,0 +1,92 @@
+﻿<Window x:Class="GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        xmlns:vm="clr-namespace:GUI.ViewModels"
+        xmlns:views="clr-namespace:GUI.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{StaticResource MainViewModel}">
+    <Window.Resources>
+        <DataTemplate x:Name="quantifiersTemplate" DataType="{x:Type vm:QuantifiersViewModel}">
+            <views:QuantifiersView/>
+        </DataTemplate>
+        <DataTemplate x:Name="qualifiersTemplate" DataType="{x:Type vm:QualifiersViewModel}">
+            <views:QualifiersView/>
+        </DataTemplate>
+        <DataTemplate x:Name="summarizersTemplate" DataType="{x:Type vm:SummarizersViewModel}">
+            <views:SummarizersView/>
+        </DataTemplate>
+        <DataTemplate x:Name="linguisticTemplate" DataType="{x:Type vm:LinguisticSummaryViewModel}">
+            <views:LinguisticSummaryView/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.7*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="4">
+            <StackPanel Orientation="Vertical" Margin="16">
+                <Menu
+                    IsMainMenu="True">
+                    <MenuItem Header="File">
+                        <MenuItem Header="Load">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="File"></materialDesign:PackIcon>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Save">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="File"></materialDesign:PackIcon>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+                <Button Margin="16"
+                        Command="{Binding Navigate}"
+                        CommandParameter="QUANTIFIERS">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Quantifiers"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Margin="16"                    
+                        Command="{Binding Navigate}"
+                        CommandParameter="QUALIFIERS">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Qualifiers"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Margin="16"
+                        Command="{Binding Navigate}"
+                        CommandParameter="SUMMARIZERS">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Summarizers"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button 
+                    Command="{Binding Navigate}"
+                    CommandParameter="SUMMARY">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Linguistic Summarization" TextWrapping="Wrap"></TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+        <ContentControl 
+            Content="{Binding ActiveViewModel}"
+            Margin="25 0 25 25"
+            Grid.Column="1"/>
+    </Grid>
+</Window>

@@ -13,12 +13,15 @@ namespace Logic.MembershipFunctions
         private readonly double _c;
         private readonly double _d;
 
+        public string Name { get; }
+
         public TrapezoidalMembershipFunction(double a, double b, double c, double d)
         {
             _a = a;
             _b = b;
             _c = c;
             _d = d;
+            Name = $"trapezoidal({_a}, {_b}, {_c}, {_d})";
         }
 
         public double GetMembershipFunctionValue(double valueToCalc)
