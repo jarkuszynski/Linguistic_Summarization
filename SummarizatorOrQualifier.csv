@@ -3,8 +3,11 @@
 #function type to choose trian/trap
 #function params according to function type: trian a;m;b, trap a;b;c;d
 summarizators;and
-duzo;Number of Killed;trap;1,2,3,4;1;3
+duzo zabojstw;Number of Killed;trap;5,6,8,8;0;8
 qualifiers
-na polnocy;Vertical;trian;1,3,2;1;3
-quantifiers;Absolute
-duzo ze wszystkich;nan;trian;3,5,4;0;100
+na polnocy;Vertical;trian;35,48,48;25;49
+na zachodzie;Horizontal;trian;100,140,140;66;140
+quantifiers;relative
+duzo ze wszystkich;nan;trian;0.0,1.0,0.5;0;100
+quantifiers;absolute
+duzo;nan;trian;5,5000,4000;0;100

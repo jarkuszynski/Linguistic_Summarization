@@ -53,25 +53,31 @@ namespace Logic
             List<List<Summarizator>> summarizatorCombinations = new List<List<Summarizator>>();
             List<SingleLingusticObject> allPossibleSingleLingusticObjects = new List<SingleLingusticObject>();
             summarizatorCombinations = allPossibleSummarizatorCombinations();
-            List<SingleLingusticObject> singleSummarizationObjects = new List<SingleLingusticObject>();
             foreach (Quantifier quantifier in Quantifiers)
             {
-                if (Qualifiers.Count >= 1)
+                if (!quantifier.IsAbsolute)
                 {
-                    foreach (Qualifier qualifier in Qualifiers)
+                    if (Qualifiers.Count >= 1)
                     {
-                        foreach (List<Summarizator> summarizators in summarizatorCombinations)
+                        foreach (Qualifier qualifier in Qualifiers)
                         {
-                            allPossibleSingleLingusticObjects.Add(new SingleLingusticObject(summarizators, quantifier, qualifier, operationType));
+                            foreach (List<Summarizator> summarizators in summarizatorCombinations)
+                            {
+                                allPossibleSingleLingusticObjects.Add(new SingleLingusticObject(summarizators, quantifier, qualifier, operationType));
+                            }
                         }
                     }
                 }
-                
-            foreach (List<Summarizator> summarizators in summarizatorCombinations)
-            {
-                allPossibleSingleLingusticObjects.Add(new SingleLingusticObject(summarizators, quantifier, null, operationType));
-            }
-                
+                else
+                {
+                    foreach (List<Summarizator> summarizators in summarizatorCombinations)
+                    {
+                        allPossibleSingleLingusticObjects.Add(new SingleLingusticObject(summarizators, quantifier, null, operationType));
+                    }
+                }
+
+
+
             }
             AllSummarizationScenario = allPossibleSingleLingusticObjects;
         }
@@ -88,7 +94,7 @@ namespace Logic
             }
             return SummarizatorsCombinations;
         }
-        
+
     }
 
 }

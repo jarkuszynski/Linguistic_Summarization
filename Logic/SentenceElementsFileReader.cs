@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -55,11 +56,12 @@ namespace CsvDataGetter
                 csvParser.ReadLine();
                 var parsingMode = ElementType.Summarizator;
                 var currentLogicalOperator = OperationType.And;
+                Quantifier.QuantifierType quantifierType = Quantifier.QuantifierType.Relative;
+
                 while (!csvParser.EndOfData)
                 {
                     IMembershipFunction membershipFunction;
                     string[] singleRow = csvParser.ReadFields();
-                    Quantifier.QuantifierType quantifierType = Quantifier.QuantifierType.Relative;
                     if ((singleRow ?? throw new InvalidOperationException()).Contains(""))
                     {
                         continue;
@@ -78,7 +80,8 @@ namespace CsvDataGetter
                     else if (singleRow[0] == "quantifiers")
                     {
                         parsingMode = ElementType.Quantifier;
-                        quantifierType = (singleRow[1] == Quantifier.QuantifierType.Relative.ToString().ToLowerInvariant()) ? Quantifier.QuantifierType.Relative : Quantifier.QuantifierType.Absolute;
+                        Console.WriteLine(singleRow[1] + Quantifier.QuantifierType.Relative.ToString().ToLowerInvariant());
+                        quantifierType = singleRow[1] == Quantifier.QuantifierType.Relative.ToString().ToLowerInvariant() ? Quantifier.QuantifierType.Relative : Quantifier.QuantifierType.Absolute;
                         continue;
                     }
                     string description = singleRow[0];
@@ -89,7 +92,7 @@ namespace CsvDataGetter
                     int maxValue = int.Parse(singleRow[5]);
                     if (functionType == "trian")
                     {
-                        membershipFunction = new TriangleMembershipFunction(double.Parse(functionParametres[0]), double.Parse(functionParametres[1]), double.Parse(functionParametres[2]));
+                        membershipFunction = new TriangleMembershipFunction(double.Parse(functionParametres[0], CultureInfo.InvariantCulture), double.Parse(functionParametres[1],CultureInfo.InvariantCulture), double.Parse(functionParametres[2], CultureInfo.InvariantCulture));
                     }
                     else
                     {

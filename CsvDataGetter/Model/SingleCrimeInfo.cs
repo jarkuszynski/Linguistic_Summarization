@@ -9,8 +9,8 @@ namespace CsvDataGetter.Model
     public class SingleCrimeInfo
     {
         private const double _southEndCoord = 24.520833;
-        private const double _westEndCoord = -124.771667;
         private const double _northEndCoord = 49.384358;
+        private const double _westEndCoord = -124.771667;
         private const double _eastEndCoord = -66.946944;
         public int Id { get; set; }
         public DateTime Date { get; set; }
@@ -70,7 +70,7 @@ namespace CsvDataGetter.Model
         /// <returns>Returns relative latitude from south side of USA - as bigger then norther</returns>
         private double GetVerticalGeoSide()
         {
-            return 1.0 * Latitude - _southEndCoord;
+            return 1.0 * -_southEndCoord + Longitude;
         }
         /// <summary>
         /// 

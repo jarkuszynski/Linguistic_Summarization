@@ -14,9 +14,10 @@ namespace Logic.LinguisticSummarization
         public Quantifier(string description, IMembershipFunction membershipFunction, QuantifierType type, double minValueOfColumn, double maxValueOfColumn) : base(description, membershipFunction, minValueOfColumn, maxValueOfColumn)
         {
             Type = type;
+            IsAbsolute = Type == QuantifierType.Absolute ? true : false;
         }
 
-        public bool IsAbsolute => Type == QuantifierType.Absolute;
+        public bool IsAbsolute { get; set; }
 
         public enum QuantifierType
         {
