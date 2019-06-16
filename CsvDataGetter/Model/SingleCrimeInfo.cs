@@ -60,6 +60,22 @@ namespace CsvDataGetter.Model
             }
         }
 
+        public static List<string> GetAvailableProperties()
+        {
+            List<string> availableProperties = new List<string>();
+            availableProperties.Add("Number of Killed");
+            availableProperties.Add("Number of Injured");
+            availableProperties.Add("Gun status");
+            availableProperties.Add("Average Age");
+            availableProperties.Add("Age Group");
+            availableProperties.Add("Gender Fraction");
+            availableProperties.Add("Participant Type");
+            availableProperties.Add("Horizontal");
+            availableProperties.Add("Vertical");
+            availableProperties.Add("Period");
+            return availableProperties;
+        }
+
         private double GetDatePeriodFraction()
         {
             return (Date - BeginDate).TotalDays;

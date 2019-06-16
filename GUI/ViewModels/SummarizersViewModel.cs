@@ -15,7 +15,7 @@ namespace GUI.ViewModels
 {
     public class SummarizersViewModel: BindableBase
     {
-        public ObservableCollection<CheckableSummarizator> Summarizers { get; }
+        public ObservableCollection<CheckableSummarizator> Summarizators { get; }
 
         public ObservableCollection<Checkable> Attributes { get; }
 
@@ -23,7 +23,7 @@ namespace GUI.ViewModels
 
         public RelayCommand SelectAll { get; }
         public RelayCommand DeselectAll { get; }
-        public RelayCommand CreateSummarizer { get; }
+        public RelayCommand CreateSummarizator { get; }
 
         private string _label;
 
@@ -53,18 +53,18 @@ namespace GUI.ViewModels
         public SummarizersViewModel()
         {
             MembershipViewModel = new MembershipFunctionViewModel();
-            Summarizers = new ObservableCollection<CheckableSummarizator>
+            Summarizators = new ObservableCollection<CheckableSummarizator>
                 (SummaryContext.Instance.Summarizators);
 
             List<string> excludedProperties = new List<string>() { "Id", "Name" };
-            Attributes = new ObservableCollection<Checkable>(typeof(SingleCrimeInfo).GetProperties().Where(p => !excludedProperties.Contains(p.Name)).Select(p => new Checkable() { Name = p.Name }));
+            Attributes = new ObservableCollection<Checkable>(SingleCrimeInfo.GetAvailableProperties().Select(p => new Checkable() { Name = p }));
 
             SelectAll = new RelayCommand(() => SetAllCheckables(true));
             DeselectAll = new RelayCommand(() => SetAllCheckables(false));
-            CreateSummarizer = new RelayCommand(() => CreateSummarizerFromForm());
+            CreateSummarizator = new RelayCommand(() => CreateSummarizatorFromForm());
         }
 
-        private void CreateSummarizerFromForm()
+        private void CreateSummarizatorFromForm()
         {
             if (string.IsNullOrEmpty(Description))
             {
@@ -88,7 +88,7 @@ namespace GUI.ViewModels
 
 
                 SummaryContext.Instance.Summarizators.Add(checkableSumm);
-                Summarizers.Add(checkableSumm);
+                Summarizators.Add(checkableSumm);
             }
 
 
@@ -96,7 +96,7 @@ namespace GUI.ViewModels
 
         public void SetAllCheckables(bool isChecked)
         {
-            foreach (var summ in Summarizers)
+            foreach (var summ in Summarizators)
             {
                 summ.IsChecked = isChecked;
             }
