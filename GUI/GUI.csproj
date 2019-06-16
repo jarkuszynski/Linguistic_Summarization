@@ -165,6 +165,10 @@
       <Project>{5DBBFE98-31A5-43C2-A366-0EDEA1C3E5BA}</Project>
       <Name>CsvDataGetter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IOperations\IOperations.csproj">
+      <Project>{59026d16-8f6d-4975-808a-1e4277d7046d}</Project>
+      <Name>IOperations</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{9AE4287B-6586-4C88-8464-2C9751DF70EE}</Project>
       <Name>Logic</Name>

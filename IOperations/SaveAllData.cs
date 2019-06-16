@@ -10,13 +10,14 @@ namespace IOperations
 {
     public static class SaveAllData
     {
-        public static void SaveToFile(List<BuildScenarioSentence> sentences, string filePath)
+        public static void SaveToFile(List<string> sentences, string filePath, double threshold)
         {
             using (StreamWriter sw = new StreamWriter(filePath))
             {
-                foreach (BuildScenarioSentence sentence in sentences)
+                foreach (string sentence in sentences)
                 {
-                    sw.WriteLine(sentence.GetScenarioResult());
+                    // TODO zapisane wyniki tylko gdy T1 > od threshold
+                    sw.WriteLine(sentence);
                 }
             }
         }

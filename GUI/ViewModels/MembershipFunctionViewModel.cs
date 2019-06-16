@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GUI.ViewModels
 {
-    class MembershipFunctionViewModel: BindableBase
+    public class MembershipFunctionViewModel: BindableBase
     {
 
         public List<string> MEMBERSHIP_TYPES { get; } = new List<string> { "trapezoidal", "triangular" };
