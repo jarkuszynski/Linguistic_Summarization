@@ -41,13 +41,9 @@
             <StackPanel Orientation="Vertical" Margin="16">
                 <Menu
                     IsMainMenu="True">
-                    <MenuItem Header="File">
-                        <MenuItem Header="Load">
-                            <MenuItem.Icon>
-                                <materialDesign:PackIcon Kind="File"></materialDesign:PackIcon>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Save">
+                    <MenuItem Header="Plik">
+                        <MenuItem Header="Zapisz"
+                                  Command="{Binding Save}">
                             <MenuItem.Icon>
                                 <materialDesign:PackIcon Kind="File"></materialDesign:PackIcon>
                             </MenuItem.Icon>

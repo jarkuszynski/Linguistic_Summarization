@@ -12,6 +12,7 @@ namespace Logic.MembershipFunctions
 
         double Cardinality { get; }
         double Support { get; }
+        string Name { get; }
 
     }
 }

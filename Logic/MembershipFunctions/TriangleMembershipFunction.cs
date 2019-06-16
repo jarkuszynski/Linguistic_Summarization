@@ -24,7 +24,7 @@ namespace Logic.MembershipFunctions
             {
                 throw new ArgumentException("m must be between range of (a,b)");
             }
-            Name = $"trapezoidal({_a}, {_b}, {_m})";
+            Name = $"triangle({_a}, {_b}, {_m})";
         }
 
         public double GetMembershipFunctionValue(double valueToCalc)

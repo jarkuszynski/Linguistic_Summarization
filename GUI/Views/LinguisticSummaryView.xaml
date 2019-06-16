@@ -7,6 +7,38 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="Summary"></TextBlock>  
+        <StackPanel Background="AntiqueWhite" Width="350" Height="400">
+            <TextBlock Text="Wybrano:" Margin="30" HorizontalAlignment="Center" FontSize="20"/>
+            <StackPanel Orientation="Horizontal"
+                            Margin="0 0 0 10">
+                <TextBlock Text="Ilość kwantyfikatorów:"/>
+                <TextBlock Margin="5 0 0 0" Text="{Binding QuantifiersCount}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                                Margin="0 0 0 10">
+                <TextBlock Text="Ilość kwalifikatorów"/>
+                <TextBlock Margin="5 0 0 0" Text="{Binding QualifiersCount}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                                Margin="0 0 0 10">
+                <TextBlock Text="Ilość sumaryzatorów"/>
+                <TextBlock Margin="5 0 0 0" Text="{Binding SummarizatorsCount}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                                Margin="0 0 0 10">
+                <TextBlock Text="Summarizers operation:"/>
+                <ComboBox Margin="15 -5 0 0" ItemsSource="{Binding SummarizersOperationsList}" SelectedItem="{Binding SummarizersOperation}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                                Margin="0 0 0 2">
+                <TextBlock Text="Dokładność miary prawdziwości:" VerticalAlignment="Center"/>
+                <TextBox Text="{Binding T1Threshold}" Width="50" VerticalAlignment="Center" Margin="7 0 0 0"/>
+            </StackPanel>
+            <Button Content="Generuj podsumowania do pliku"
+                            Margin="0 10 0 0"
+                            Width="300"
+                            Command="{Binding GenerateLingusiticSummary}"/>
+        </StackPanel>
+
     </Grid>
 </UserControl>

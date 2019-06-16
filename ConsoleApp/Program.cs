@@ -19,7 +19,7 @@ namespace ConsoleApp
         {
             string workingDirectory = Environment.CurrentDirectory;
             string filepath = Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\ksr.csv";
-            var example = ReadAllData.ReadData(filepath);
+            var example = ReadAllData.ReadData();
 
             double dateFullPeriod = (SingleCrimeInfo.EndDate - SingleCrimeInfo.BeginDate).TotalDays;
             List<Summarizator> summarizators = new List<Summarizator>();
@@ -41,7 +41,7 @@ namespace ConsoleApp
 
             quantifiers.Add(new Quantifier("duzo ze wszystkich ", new TriangleMembershipFunction(0, 3, 2), Quantifier.QuantifierType.Absolute, 0, 1));
 
-            LingusticSummarization lingusticSummarization = new LingusticSummarization(sentenceTuple.Qualifiers, sentenceTuple.Quantifiers, sentenceTuple.Summarizators, example);
+            LingusticSummarization lingusticSummarization = new LingusticSummarization(sentenceTuple.Qualifiers, sentenceTuple.Quantifiers, sentenceTuple.Summarizators);
             List<string> d = lingusticSummarization.results();
             foreach (var item in d)
             {

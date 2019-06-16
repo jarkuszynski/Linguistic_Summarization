@@ -21,11 +21,12 @@
         <Border CornerRadius="6" BorderBrush="Gray" Background="LightGray" BorderThickness="2">
             <StackPanel Background="AntiqueWhite" >
                 <TextBlock Text="Dodaj nowy kwantyfikator" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Margin="16" Text="Opis Sumaryzatora" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Margin="16" Text="Opis kwantyfikatora" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Margin="30,0" 
                      HorizontalAlignment="Stretch" 
                      Background="White" 
-                     Text="OPIS" TextAlignment="Center"></TextBox>
+                     Text="{Binding Description}">
+                </TextBox>
                 <StackPanel HorizontalAlignment="Left" Margin="30,0" Orientation="Horizontal">
                     <Label Content="Czy bezwględny?"></Label>
                     <CheckBox IsChecked="{Binding IsAbsolute}"></CheckBox>

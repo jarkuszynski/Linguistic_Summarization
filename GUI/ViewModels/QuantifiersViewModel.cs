@@ -24,12 +24,12 @@ namespace GUI.ViewModels
         public RelayCommand CreateQuantifier { get; }
 
 
-        private string _label;
+        private string _description;
 
-        public string Label
+        public string Description
         {
-            get => _label;
-            set => SetProperty(ref _label, value);
+            get => _description;
+            set => SetProperty(ref _description, value);
         }
 
         private double _xMin = 0d;
@@ -70,7 +70,7 @@ namespace GUI.ViewModels
 
         public void CreateQuantifierFromForm()
         {
-            if (string.IsNullOrEmpty(Label))
+            if (string.IsNullOrEmpty(Description))
             {
                 Messanger.DisplayError("Unable to create quantifier withour label");
                 return;
@@ -83,7 +83,7 @@ namespace GUI.ViewModels
                 return;
             }
 
-            var quan = new Quantifier(Label, memFun, IsAbsolute ? QuantifierType.Absolute : QuantifierType.Relative, XMin, XMax);
+            var quan = new Quantifier(Description, memFun, IsAbsolute ? QuantifierType.Absolute : QuantifierType.Relative, XMin, XMax);
             var checkableQuan = new CheckableQuantifier(quan, true);
 
 

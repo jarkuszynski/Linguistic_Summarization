@@ -4,9 +4,128 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI.Views"
+             xmlns:model="clr-namespace:GUI.Model"
+             xmlns:vm="clr-namespace:GUI.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <DataTemplate x:Name="membershipTemplate" DataType="{x:Type vm:MembershipFunctionViewModel}">
+            <local:MembershipFunctionView/>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border CornerRadius="6" BorderBrush="Gray" Background="LightGray" BorderThickness="2">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <StackPanel Background="AntiqueWhite" >
+                    <TextBlock Text="Dodaj nowy kwalifikator" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Margin="16" Text="Opis kwalifikatora" HorizontalAlignment="Center"></TextBlock>
+                    <TextBox Margin="30,0" 
+                         HorizontalAlignment="Stretch" 
+                         Background="White" 
+                         Text="{Binding Description}">
+                    </TextBox>
+                    <StackPanel HorizontalAlignment="Left" Margin="30,0" Orientation="Horizontal">
+                    </StackPanel>
+                    <TextBlock Text="Dostępne atrybuty"></TextBlock>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                      Height="100">
+                        <ItemsControl
+                                HorizontalAlignment="Left"
+                                FontSize="12"
+                                ItemsSource="{Binding Attributes}"
+                                MinWidth="300">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate
+                                        DataType="{x:Type model:Checkable}">
+                                    <Border
+                                            x:Name="Border"
+                                            Padding="8">
+                                        <StackPanel 
+                                                Orientation="Horizontal">
+                                            <CheckBox
+                                                    Margin="0 0 5 0"
+                                                    VerticalAlignment="Center"
+                                                    IsChecked="{Binding IsChecked}" />
+                                            <TextBlock
+                                                    FontWeight="Bold"
+                                                    VerticalAlignment="Center"
+                                                    Text="{Binding Name}" />
+                                        </StackPanel>
+                                    </Border>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger
+                                                Binding="{Binding IsChecked}"
+                                                Value="True">
+                                            <Setter
+                                                    TargetName="Border"
+                                                    Property="Background"
+                                                    Value="{DynamicResource MaterialDesignSelection}" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                    <ContentControl 
+                        Content="{Binding MembershipFunctionView}"
+                        Margin="30"
+                    />
+
+                    <Button Content="Create" HorizontalAlignment="Right" Margin="30,10" Command="{Binding CreateQualifier}"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+        <StackPanel Grid.Column="1" Background="AntiqueWhite">
+            <TextBlock Text="Dostępne sumaryzatory" HorizontalAlignment="Center"></TextBlock>
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  Height="450">
+                <ItemsControl
+                                HorizontalAlignment="Left"
+                                FontSize="12"
+                                ItemsSource="{Binding Qualifiers}"
+                                MinWidth="300">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate
+                            DataType="{x:Type model:CheckableQualifier}">
+                            <Border
+                                            x:Name="Border"
+                                            Padding="8">
+                                <StackPanel 
+                                                Orientation="Horizontal">
+                                    <CheckBox
+                                                    Margin="0 0 5 0"
+                                                    VerticalAlignment="Center"
+                                                    IsChecked="{Binding IsChecked}" />
+                                    <TextBlock
+                                                    FontWeight="Bold"
+                                                    VerticalAlignment="Center"
+                                                    Text="{Binding Qualifier.Description}" />
+                                    <TextBlock
+                                                    Margin="5 0 0 0"
+                                                    FontWeight="Bold"
+                                                    VerticalAlignment="Center"
+                                                    Text="{Binding Qualifier.MembershipFunction.Name}" />
+                                </StackPanel>
+                            </Border>
+                            <DataTemplate.Triggers>
+                                <DataTrigger
+                                                Binding="{Binding IsChecked}"
+                                                Value="True">
+                                    <Setter
+                                                    TargetName="Border"
+                                                    Property="Background"
+                                                    Value="{DynamicResource MaterialDesignSelection}" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </StackPanel>
     </Grid>
 </UserControl>
