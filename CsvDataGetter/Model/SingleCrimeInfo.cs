@@ -163,7 +163,7 @@ namespace CsvDataGetter.Model
             return fraction;
         }
 
-        private double GetAverageParticipantsAge()
+        public double GetAverageParticipantsAge()
         {
             double averageAge = 0.0;
             foreach (ParticipantInfo participantInfo in ParticipantsInfo)

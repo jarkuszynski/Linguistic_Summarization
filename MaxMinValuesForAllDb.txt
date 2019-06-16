@@ -1,0 +1,14 @@
+MAX VALUES:
+- Killed: 8
+- Injured: 14
+- Date: 31.03.2018 00:00:00
+- Latitude: 71,3
+- Longitude: -67,2711
+- Number of Guns: 400, 300, 280, 189, 152 {echhhh}
+- AvgAge: 80
+
+MIN VALUES:
+- Date: 01.01.2013 00:00:00
+- Latitude: 19,1127
+- Longitude: -165,711
+- AvgAge: 0, 1

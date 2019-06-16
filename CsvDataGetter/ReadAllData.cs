@@ -62,7 +62,6 @@ namespace CsvDataGetter
 
                 simpleCrime.Latitude = float.Parse(singleRow[8]);
                 simpleCrime.Longitude = float.Parse(singleRow[9]);
-
                 string[] partAge = SplitString(singleRow[11]);
                 string[] partAgeGroup = SplitString(singleRow[12]);
                 string[] partGender = SplitString(singleRow[13]);
@@ -96,6 +95,19 @@ namespace CsvDataGetter
                     {
                         partStatusList[i].Add(partStatus[i]);
                     }
+                }
+
+                bool IsAgeAbove = false;
+                foreach (string item in partAge)
+                {
+                    if (int.Parse(item) > 80)
+                    {
+                        IsAgeAbove = true;
+                    }
+                }
+                if (IsAgeAbove)
+                {
+                    continue;
                 }
 
                 for (int i = 0; i < partAge.Length; i++)

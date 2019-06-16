@@ -80,7 +80,6 @@ namespace CsvDataGetter
                     else if (singleRow[0] == "quantifiers")
                     {
                         parsingMode = ElementType.Quantifier;
-                        Console.WriteLine(singleRow[1] + Quantifier.QuantifierType.Relative.ToString().ToLowerInvariant());
                         quantifierType = singleRow[1] == Quantifier.QuantifierType.Relative.ToString().ToLowerInvariant() ? Quantifier.QuantifierType.Relative : Quantifier.QuantifierType.Absolute;
                         continue;
                     }

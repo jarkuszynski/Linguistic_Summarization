@@ -16,7 +16,6 @@ namespace IOperations
             {
                 foreach (string sentence in sentences)
                 {
-                    // TODO zapisane wyniki tylko gdy T1 > od threshold
                     sw.WriteLine(sentence);
                 }
             }

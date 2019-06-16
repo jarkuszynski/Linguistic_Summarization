@@ -24,23 +24,26 @@ namespace Logic.ScenarioOperations
         {
             AllTValues allTResults = CalculateAllSummarizationValues();
             StringBuilder stringBuilder = new StringBuilder();
+            if (allTResults.T1 <= 0)
+            {
+                return string.Empty;
+            }
             stringBuilder.Append(singleLingusticObject.BuildResultSentence() + " ");
-            stringBuilder.Append("[T1: " + allTResults.T1 + "] ");
-            stringBuilder.Append("[T2: " + allTResults.T2 + "] ");
-            stringBuilder.Append("[T3: " + allTResults.T3 + "] ");
-            stringBuilder.Append("[T4: " + allTResults.T4 + "] ");
-            stringBuilder.Append("[T5: " + allTResults.T5 + "] ");
-            stringBuilder.Append("[T1T5: " + allTResults.T1T5 + "] ");
-            stringBuilder.Append("[T6: " + allTResults.T6 + "] ");
-            stringBuilder.Append("[T7: " + allTResults.T7 + "] ");
-            stringBuilder.Append("[T8: " + allTResults.T8 + "] ");
+            stringBuilder.Append("[T1: " + Math.Truncate( allTResults.T1 * 1000.0) / 1000.0 + "] ");
+            stringBuilder.Append("[T2: " + Math.Truncate(allTResults.T2 * 1000.0) / 1000.0 + "] ");
+            stringBuilder.Append("[T3: " + Math.Truncate(allTResults.T3 * 1000.0) / 1000.0 + "] ");
+            stringBuilder.Append("[T4: " + Math.Truncate(allTResults.T4 * 1000.0) / 1000.0 + "] ");
+            stringBuilder.Append("[T5: " + Math.Truncate(allTResults.T5 * 1000.0) / 1000.0 + "] ");
+            stringBuilder.Append("[T6: " + Math.Truncate(allTResults.T6 * 1000.0) / 1000.0 + "] ");
+            stringBuilder.Append("[T7: " + Math.Truncate(allTResults.T7 * 1000.0) / 1000.0 + "] ");
+            stringBuilder.Append("[T8: " + Math.Truncate(allTResults.T8 * 1000.0) / 1000.0 + "] ");
             if (singleLingusticObject.Qualifier != null)
             {
-                stringBuilder.Append("[T9: " + allTResults.T9 + "] ");
-                stringBuilder.Append("[T10: " + allTResults.T10 + "] ");
-                stringBuilder.Append("[T11: " + allTResults.T11 + "] ");
+                stringBuilder.Append("[T9: " + Math.Truncate(allTResults.T9 * 1000.0) / 1000.0 + "] ");
+                stringBuilder.Append("[T10: " + Math.Truncate(allTResults.T10 * 1000.0) / 1000.0 + "] ");
+                stringBuilder.Append("[T11: " + Math.Truncate(allTResults.T11 * 1000.0) / 1000.0 + "] ");
             }
-            stringBuilder.Append("[T1T11: " + allTResults.T1T11 + "] ");
+            stringBuilder.Append("[T1T11: " + Math.Truncate(allTResults.T1T11 * 1000.0) / 1000.0 + "] ");
 
             return stringBuilder.ToString();
         }
