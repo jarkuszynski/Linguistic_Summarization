@@ -130,6 +130,45 @@ namespace CsvDataGetter
             return new SentenceTuple(qualifiers, quantifiers, summarizators, currentLogicalOperator);
             }
         }
+        public static void SaveFuzzySetsToFile(
+            List<Quantifier> quants,
+            List<Qualifier> quals,
+            List<Summarizator> summs,
+            OperationType op,
+            string dest)
+        {
+            using (var fs = new StreamWriter(dest))
+            {
+                fs.WriteLine("QUANTIFIERS");
+                foreach (var quan in quants)
+                {
+                    fs.WriteLine($"{quan.Description}:{(quan.IsAbsolute ? "abs" : "rel")}:{GetMembershipString(quan.MembershipFunction)}");
+                }
+                fs.WriteLine();
+
+
+                fs.WriteLine("QUALIFIERS");
+                foreach (var qual in quals)
+                {
+                    fs.WriteLine($"{qual.Description}:{qual.AttributeName}:{GetMembershipString(qual.MembershipFunction)}");
+                }
+                fs.WriteLine();
+
+                fs.WriteLine($"SUMMARIZERS {op.ToString()}");
+                foreach (var summ in summs)
+                {
+                    fs.WriteLine($"{summ.Description}:{summ.AttributeName}:{GetMembershipString(summ.MembershipFunction)}");
+                }
+                fs.WriteLine();
+            }
+        }
+        public static string GetMembershipString(IMembershipFunction memFun)
+        {
+            var memFunName = memFun.Name;
+            memFunName = memFunName.Replace("triangular", "tri");
+            memFunName = memFunName.Replace("trapezoidal", "trap");
+            return memFunName;
+        }
 
     }
 }

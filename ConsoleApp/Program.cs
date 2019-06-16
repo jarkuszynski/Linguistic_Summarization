@@ -24,7 +24,7 @@ namespace ConsoleApp
             Console.WriteLine(result[0]);
             double dateFullPeriod = (SingleCrimeInfo.EndDate - SingleCrimeInfo.BeginDate).TotalDays;
             SentenceTuple sentenceTuple = SentenceElementsFileReader.getSentenceElementsFromFile();
-            LingusticSummarization lingusticSummarization = new LingusticSummarization(sentenceTuple.Qualifiers, sentenceTuple.Quantifiers, sentenceTuple.Summarizators, example);
+            LingusticSummarization lingusticSummarization = new LingusticSummarization(sentenceTuple.Qualifiers, sentenceTuple.Quantifiers, sentenceTuple.Summarizators);
             List<string> d = lingusticSummarization.results();
             foreach (var item in d)
             {

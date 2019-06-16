@@ -1,4 +1,6 @@
-﻿using GUI.Base;
+﻿using CsvDataGetter;
+using GUI.Base;
+using GUI.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,29 +21,22 @@ namespace GUI.ViewModels
 
         public RelayCommand<string> Navigate { get; }
 
-        public RelayCommand Load { get; }
-
         public RelayCommand Save { get; }
-
 
         public MainViewModel()
         {
 
             Navigate = new RelayCommand<string>((dest) => NavigateTo(dest));
 
-            //SummaryContext sumContext = SummaryContext.Instance;
-            ////sumContext.Players.AddRange(PlayerDbContext.ReadData());
+            SummaryContext sumContext = SummaryContext.Instance;
 
-            //Load = new RelayCommand(LoadFuzzySetsFromFile);
-            //Save = new RelayCommand(SaveFuzzySetsToFile);
+            Save = new RelayCommand(SaveFuzzySetsToFile);
 
-
-            ////default file
-            //var (quants, quals, summs, logicalOperation) = FuzzySetParser.ParseFuzzySetFile(sumContext.Players.Count);
-            //SummaryContext.Instance.Quantifiers.AddRange(quants.Select(q => new Model.CheckableQuantifier(q, true)));
-            //SummaryContext.Instance.Qualifiers.AddRange(quals.Select(q => new Model.CheckableQualifier(q, true)));
-            //SummaryContext.Instance.Summarizers.AddRange(summs.Select(s => new Model.CheckableSummarizer(s, true)));
-            //SummaryContext.Instance.SummaryOperation = logicalOperation;
+            //default file
+            SentenceTuple sentenceTuple = SentenceElementsFileReader.getSentenceElementsFromFile();
+            SummaryContext.Instance.Quantifiers.AddRange(sentenceTuple.Quantifiers.Select(q => new Model.CheckableQuantifier(q, true)));
+            SummaryContext.Instance.Qualifiers.AddRange(sentenceTuple.Qualifiers.Select(q => new Model.CheckableQualifier(q, true)));
+            SummaryContext.Instance.Summarizators.AddRange(sentenceTuple.Summarizators.Select(s => new Model.CheckableSummarizator(s, true)));
         }
 
 
@@ -65,41 +60,19 @@ namespace GUI.ViewModels
             }
         }
 
-        public void LoadFuzzySetsFromFile()
+        public void SaveFuzzySetsToFile()
         {
-        //    string filepath = FileSystemHelper.GetFilePath();
-        //    if (string.IsNullOrEmpty(filepath)) return;
+            string dest = FileSystemHelper.GetSaveFilePath();
+            if (string.IsNullOrEmpty(dest)) return;
 
-        //    SummaryContext sumContext = SummaryContext.Instance;
-        //    try
-        //    {
-        //        var (quants, quals, summs, logicalOperation) = FuzzySetParser.ParseFuzzySetFile(sumContext.Players.Count, filepath);
-        //        SummaryContext.Instance.Quantifiers.AddRange(quants.Select(q => new Model.CheckableQuantifier(q, true)));
-        //        SummaryContext.Instance.Qualifiers.AddRange(quals.Select(q => new Model.CheckableQualifier(q, true)));
-        //        SummaryContext.Instance.Summarizers.AddRange(summs.Select(s => new Model.CheckableSummarizer(s, true)));
-        //        SummaryContext.Instance.SummaryOperation = logicalOperation;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Messanger.DisplayError(ex.Message);
-        //    }
+            SummaryContext sumContext = SummaryContext.Instance;
 
-        //    NavigateTo("QUANTIFIERS");
-        //}
-
-        //public void SaveFuzzySetsToFile()
-        //{
-        //    string dest = FileSystemHelper.GetSaveFilePath();
-        //    if (string.IsNullOrEmpty(dest)) return;
-
-        //    SummaryContext sumContext = SummaryContext.Instance;
-
-        //    FuzzySetParser.SaveFuzzySetsToFile(
-        //        sumContext.Quantifiers.Select(q => q.Quantifier).ToList(),
-        //        sumContext.Qualifiers.Select(q => q.Qualifier).ToList(),
-        //        sumContext.Summarizers.Select(q => q.Summarizer).ToList(),
-        //        sumContext.SummaryOperation,
-        //        dest);
+            SentenceElementsFileReader.SaveFuzzySetsToFile(
+                sumContext.Quantifiers.Select(q => q.Quantifier).ToList(),
+                sumContext.Qualifiers.Select(q => q.Qualifier).ToList(),
+                sumContext.Summarizators.Select(q => q.Summarizator).ToList(),
+                sumContext.OperationType,
+                dest);
         }
     }
 }

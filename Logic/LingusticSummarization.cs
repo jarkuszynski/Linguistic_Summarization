@@ -12,12 +12,12 @@ namespace Logic
 {
     public class LingusticSummarization
     {
-        public LingusticSummarization(List<Qualifier> qualifiers, List<Quantifier> quantifiers, List<Summarizator> summarizators, List<SingleCrimeInfo> crimesList)
+        public LingusticSummarization(List<Qualifier> qualifiers, List<Quantifier> quantifiers, List<Summarizator> summarizators)
         {
             Qualifiers = qualifiers;
             Quantifiers = quantifiers;
             Summarizators = summarizators;
-            CrimesList = crimesList;
+            CrimesList = ReadAllData.ReadData();
             AllSummarizationScenario = new List<SingleLingusticObject>();
             generateMixedLinqusticObjects();
 

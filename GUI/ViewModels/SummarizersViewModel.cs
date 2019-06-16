@@ -19,18 +19,18 @@ namespace GUI.ViewModels
 
         public ObservableCollection<Checkable> Attributes { get; }
 
-        public MembershipFunctionViewModel MembershipViewModel { get; }
+        public MembershipFunctionViewModel MembershipFunctionView { get; }
 
         public RelayCommand SelectAll { get; }
         public RelayCommand DeselectAll { get; }
         public RelayCommand CreateSummarizator { get; }
 
-        private string _label;
+        private string _description;
 
         public string Description
         {
-            get => _label;
-            set => SetProperty(ref _label, value);
+            get => _description;
+            set => SetProperty(ref _description, value);
         }
 
         private double _xMin = 0d;
@@ -52,7 +52,7 @@ namespace GUI.ViewModels
 
         public SummarizersViewModel()
         {
-            MembershipViewModel = new MembershipFunctionViewModel();
+            MembershipFunctionView = new MembershipFunctionViewModel();
             Summarizators = new ObservableCollection<CheckableSummarizator>
                 (SummaryContext.Instance.Summarizators);
 
@@ -76,7 +76,7 @@ namespace GUI.ViewModels
 
             foreach (var at in selected)
             {
-                IMembershipFunction memFun = MembershipViewModel.GetMembershipFunction();
+                IMembershipFunction memFun = MembershipFunctionView.GetMembershipFunction();
                 if (memFun == null)
                 {
                     Messanger.DisplayError("Unable to create membership function with the given parameters");

@@ -16,6 +16,8 @@ namespace GUI.ViewModels
     {
         private double _t1Threshold = 0.3d;
 
+        private LingusticSummarization LingusticSummarization;
+
         public double T1Threshold
         {
             get => _t1Threshold;
@@ -51,21 +53,22 @@ namespace GUI.ViewModels
         public int QuantifiersCount { get; }
 
 
-        public AsyncCommand GenerateLingusiticSummaryFirstForm { get; }
-        public AsyncCommand GenerateLingusiticSummarySecondForm { get; }
-
+        public AsyncCommand GenerateLingusiticSummary { get; }
 
         public LinguisticSummaryViewModel()
         {
             SummarizatorsCount = SummaryContext.Instance.Summarizators.Count(sum => sum.IsChecked);
             QualifiersCount = SummaryContext.Instance.Qualifiers.Count(qual => qual.IsChecked);
             QuantifiersCount = SummaryContext.Instance.Quantifiers.Count(quan => quan.IsChecked);
+            string workingDirectory = Environment.CurrentDirectory;
+            string filepath = Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\ksr.db";
+            LingusticSummarization = new LingusticSummarization(SummaryContext.Instance.Qualifiers.Where(q => q.IsChecked).Select(q => q.Qualifier).ToList(), SummaryContext.Instance.Quantifiers.Where(q => q.IsChecked).Select(q => q.Quantifier).ToList(), SummaryContext.Instance.Summarizators.Where(q => q.IsChecked).Select(s => s.Summarizator).ToList());
 
-            GenerateLingusiticSummaryFirstForm = new AsyncCommand(async () =>
-                await Task.Run(() => GenerateFirstFormSummary()));
+            GenerateLingusiticSummary = new AsyncCommand(async () =>
+                await Task.Run(() => GenerateFormSummary()));
         }
 
-        private void GenerateFirstFormSummary()
+        private void GenerateFormSummary()
         {
             var destPath = FileSystemHelper.GetSaveFilePath();
             if (string.IsNullOrEmpty(destPath)) return;
@@ -78,7 +81,7 @@ namespace GUI.ViewModels
 
             GenerationStep = "Generating summaries";
 
-            LingusticSummarization linguisticSummaries = new LingusticSummarization(quals, quants, summs, singleCrimeInfos);
+            LingusticSummarization linguisticSummaries = new LingusticSummarization(quals, quants, summs);
 
             var results = linguisticSummaries.results();
             string workingDirectory = Environment.CurrentDirectory;

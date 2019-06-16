@@ -11,7 +11,7 @@ namespace CsvDataGetter
 {
     public class ReadAllData
     {
-        public static List<SingleCrimeInfo> ReadData(string filePath)
+        public static List<SingleCrimeInfo> ReadData()
         {
             CrimeInfoDBContext dBContext = new CrimeInfoDBContext();
             DataTable dataSet = dBContext.OpenConnection();
