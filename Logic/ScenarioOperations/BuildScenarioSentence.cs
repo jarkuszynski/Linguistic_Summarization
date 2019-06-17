@@ -14,17 +14,19 @@ namespace Logic.ScenarioOperations
         private List<double> _summarizationResults = new List<double>();
         private List<double> _qualifierResults = new List<double>();
         private SingleLingusticObject singleLingusticObject;
+        public double Threshold { get; set; }
 
-        public BuildScenarioSentence(SingleLingusticObject singleObject)
+        public BuildScenarioSentence(SingleLingusticObject singleObject, double threshold)
         {
             singleLingusticObject = singleObject;
+            Threshold = threshold;
         }
 
         public string GetScenarioResult()
         {
             AllTValues allTResults = CalculateAllSummarizationValues();
             StringBuilder stringBuilder = new StringBuilder();
-            if (allTResults.T1 <= 0)
+            if (allTResults.T1 <= Threshold)
             {
                 return string.Empty;
             }

@@ -10,7 +10,7 @@ namespace IOperations
 {
     public static class SaveAllData
     {
-        public static void SaveToFile(List<string> sentences, string filePath, double threshold)
+        public static void SaveToFile(List<string> sentences, string filePath)
         {
             using (StreamWriter sw = new StreamWriter(filePath))
             {

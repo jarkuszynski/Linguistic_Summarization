@@ -83,10 +83,10 @@ namespace GUI.ViewModels
 
             LingusticSummarization linguisticSummaries = new LingusticSummarization(quals, quants, summs);
 
-            var results = linguisticSummaries.results();
+            var results = linguisticSummaries.results(_t1Threshold);
             string workingDirectory = Environment.CurrentDirectory;
             string filepath = Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\results.txt";
-            SaveAllData.SaveToFile(results, filepath, _t1Threshold);
+            SaveAllData.SaveToFile(results, filepath);
         }
     }
 }

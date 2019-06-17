@@ -30,12 +30,12 @@ namespace Logic
         public static List<SingleCrimeInfo> CrimesList { get; set; }
         public List<SingleLingusticObject> AllSummarizationScenario { get; set; }
         public static List<SingleCrimeInfo> data;
-        public List<string> results()
+        public List<string> results(double threshold)
         {
             List<string> vs = new List<string>();
             foreach (var item in AllSummarizationScenario)
             {
-                BuildScenarioSentence buildScenarioSentence = new BuildScenarioSentence(item);
+                BuildScenarioSentence buildScenarioSentence = new BuildScenarioSentence(item, threshold);
                 vs.Add(buildScenarioSentence.GetScenarioResult());
             }
             return vs;
