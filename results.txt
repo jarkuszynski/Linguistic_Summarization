@@ -1,3 +1,1 @@
-in crime summary duzo ze wszystkich being/having  na polnocy are/have duzo zabojstw [T1: 0] [T2: 0,625] [T3: 0] [T4: 0,000160213618157543] [T5: 1] [T1T5: 0,325032042723632] [T6: 0] [T7: 0,5] [T8: 0,6875] [T9: 0,458333333333333] [T10: 0,729166666666667] [T11: 1] [T1T11: 0,454560019419832] 
-in crime summary duzo ze wszystkich being/having  na zachodzie are/have duzo zabojstw [T1: 0] [T2: 0,625] [T3: 0] [T4: 0,000160213618157543] [T5: 1] [T1T5: 0,325032042723632] [T6: 0] [T7: 0,5] [T8: 0,6875] [T9: 0,459459459459459] [T10: 0,72972972972973] [T11: 1] [T1T11: 0,454713582073395] 
-in crime summary duzo are/have duzo zabojstw [T1: 0,00100125156445557] [T2: 0,625] [T3: 0,000160213618157543] [T4: 0] [T5: 1] [T1T5: 0,325232293036523] [T6: -48,95] [T7: -23,975] [T8: 0,6875] [T1T11: -6,41921259407431] 
+duzo are/have duzo zabojstw [T1: 0,001] [T2: 0,625] [T3: 0] [T4: 0] [T5: 1] [T6: -48,95] [T7: -23,975] [T8: 0,687] [T1T11: -6,419] 

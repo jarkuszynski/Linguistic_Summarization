@@ -70,9 +70,6 @@ namespace GUI.ViewModels
 
         private void GenerateFormSummary()
         {
-            var destPath = FileSystemHelper.GetSaveFilePath();
-            if (string.IsNullOrEmpty(destPath)) return;
-
             var quants = SummaryContext.Instance.Quantifiers.Where(q => q.IsChecked).Select(q => q.Quantifier).ToList();
             var quals = SummaryContext.Instance.Qualifiers.Where(q => q.IsChecked).Select(q => q.Qualifier).ToList();
             var summs = SummaryContext.Instance.Summarizators.Where(q => q.IsChecked).Select(s => s.Summarizator).ToList();
@@ -83,10 +80,10 @@ namespace GUI.ViewModels
 
             LingusticSummarization linguisticSummaries = new LingusticSummarization(quals, quants, summs);
 
-            var results = linguisticSummaries.results();
+            var results = linguisticSummaries.results(_t1Threshold);
             string workingDirectory = Environment.CurrentDirectory;
             string filepath = Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\results.txt";
-            SaveAllData.SaveToFile(results, filepath, _t1Threshold);
+            SaveAllData.SaveToFile(results, filepath);
         }
     }
 }
