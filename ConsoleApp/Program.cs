@@ -20,7 +20,7 @@ namespace ConsoleApp
             string workingDirectory = Environment.CurrentDirectory;
             SentenceTuple sentenceTuple = SentenceElementsFileReader.getSentenceElementsFromFile();
             LingusticSummarization lingusticSummarization = new LingusticSummarization(sentenceTuple.Qualifiers, sentenceTuple.Quantifiers, sentenceTuple.Summarizators);
-            List<string> d = lingusticSummarization.results();
+            //List<string> d = lingusticSummarization.results();
             foreach (var item in d)
             {
                 if(item != string.Empty)

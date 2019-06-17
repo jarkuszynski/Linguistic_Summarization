@@ -104,7 +104,20 @@ namespace Logic.ScenarioOperations
                 denumertor += qualifierValue;
             }
             double r;
+            if( denumertor == 0)
+            {
+                return 0.0;
+            }
+            if (denumertor > 0)
+            {
+                Console.WriteLine();
+            }
             r = numerator / denumertor;
+            var t = singleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r);
+            if (t > 0)
+            {
+                Console.WriteLine();
+            }
             return singleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r);
         }
 

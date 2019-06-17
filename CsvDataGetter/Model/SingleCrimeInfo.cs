@@ -86,7 +86,7 @@ namespace CsvDataGetter.Model
         /// <returns>Returns relative latitude from south side of USA - as bigger then norther</returns>
         private double GetVerticalGeoSide()
         {
-            return 1.0 * -_southEndCoord + Longitude;
+            return 1.0 * -_southEndCoord + Latitude;
         }
         /// <summary>
         /// 

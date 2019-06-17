@@ -95,7 +95,7 @@ namespace CsvDataGetter
                     }
                     else
                     {
-                        membershipFunction = new TrapezoidalMembershipFunction(double.Parse(functionParametres[0]), double.Parse(functionParametres[1]), double.Parse(functionParametres[2]), double.Parse(functionParametres[3]));
+                        membershipFunction = new TrapezoidalMembershipFunction(double.Parse(functionParametres[0], CultureInfo.InvariantCulture), double.Parse(functionParametres[1], CultureInfo.InvariantCulture), double.Parse(functionParametres[2], CultureInfo.InvariantCulture), double.Parse(functionParametres[3], CultureInfo.InvariantCulture));
                     }
                     switch (parsingMode)
                     {

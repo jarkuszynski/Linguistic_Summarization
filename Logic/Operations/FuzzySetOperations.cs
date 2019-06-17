@@ -29,14 +29,20 @@ namespace Logic.Operations
             List<double> membershipSummarizationValues = summarizatorsSet.Select(s =>
                     s.MembershipFunction.GetMembershipFunctionValue(singleCrime.GetAttributeValue(s.AttributeName)))
                 .ToList();
-            if (oOperator == OperationType.And)
+            if (summarizatorsSet.Count > 1)
             {
-                return membershipSummarizationValues.Min();
+                if (oOperator == OperationType.And)
+                {
+                    return membershipSummarizationValues.Min();
+                }
+                else
+                {
+                    return membershipSummarizationValues.Max();
+                }
             }
             else
-            {
-                return membershipSummarizationValues.Max();
-            }
+                return membershipSummarizationValues[0];
+            
         }
     }
 }
