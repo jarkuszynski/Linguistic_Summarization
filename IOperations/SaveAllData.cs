@@ -16,7 +16,8 @@ namespace IOperations
             {
                 foreach (string sentence in sentences)
                 {
-                    sw.WriteLine(sentence);
+                    if (sentence != string.Empty)
+                        sw.WriteLine(sentence);
                 }
             }
         }

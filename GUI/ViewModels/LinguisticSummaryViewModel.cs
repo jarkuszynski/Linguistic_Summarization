@@ -70,9 +70,6 @@ namespace GUI.ViewModels
 
         private void GenerateFormSummary()
         {
-            var destPath = FileSystemHelper.GetSaveFilePath();
-            if (string.IsNullOrEmpty(destPath)) return;
-
             var quants = SummaryContext.Instance.Quantifiers.Where(q => q.IsChecked).Select(q => q.Quantifier).ToList();
             var quals = SummaryContext.Instance.Qualifiers.Where(q => q.IsChecked).Select(q => q.Qualifier).ToList();
             var summs = SummaryContext.Instance.Summarizators.Where(q => q.IsChecked).Select(s => s.Summarizator).ToList();
