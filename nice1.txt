@@ -1,0 +1,30 @@
+QUANTIFIERS
+Około połowa:rel:trap(0,3, 0,4, 0,6, 0,7)
+Więcej niż połowa:rel:triangle(0,5, 1, 0,8)
+Mniej niż połowa:rel:triangle(0, 0,4, 0,25)
+Około 5000:abs:triangle(100, 500, 300)
+Około 60000:abs:triangle(1100, 2200, 1700)
+Około 50000:abs:triangle(1000, 5000, 3300)
+Około 40000:abs:triangle(900, 4900, 2700)
+Około 30000:abs:triangle(800, 4000, 2000)
+Około 20000:abs:triangle(500, 2000, 1000)
+Około 10000:abs:triangle(200, 800, 600)
+Około 2000:abs:triangle(50, 150, 70)
+Około 7000:abs:triangle(120, 700, 200)
+Około 500:abs:triangle(40, 100, 60)
+Około 100:abs:triangle(10, 40, 30)
+
+QUALIFIERS
+na polnocy1:Vertical:triangle(10, 57, 57)
+na polnocy2:Vertical:triangle(0, 57, 57)
+na polnocy3:Vertical:triangle(5, 57, 57)
+na polnocy4:Vertical:triangle(7, 57, 57)
+na polnocy5:Vertical:triangle(10, 40, 40)
+na południu6:Vertical:triangle(0, 25, 25)
+na zachodzie7:Horizontal:triangle(10, 24, 24)
+
+SUMMARIZERS And
+ogólnie zabojstw:Number of Killed:trap(1, 2, 7, 8)
+mało zabojstw:Number of Killed:trap(1, 2, 2, 3)
+mało rannych:Number of Injured:trap(1, 2, 2, 3)
+

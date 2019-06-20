@@ -8,10 +8,8 @@ namespace CsvDataGetter.Model
 {
     public class SingleCrimeInfo
     {
-        private const double _southEndCoord = 24.520833;
-        private const double _northEndCoord = 49.384358;
-        private const double _westEndCoord = -124.771667;
-        private const double _eastEndCoord = -66.946944;
+        private const double _southEndCoord = 19.1127;
+        private const double _eastEndCoord = -67.2711;
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public string State { get; set; }

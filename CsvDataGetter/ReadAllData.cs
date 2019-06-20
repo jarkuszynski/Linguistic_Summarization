@@ -61,7 +61,7 @@ namespace CsvDataGetter
                 }
 
                 simpleCrime.Latitude = float.Parse(singleRow[8]);
-                simpleCrime.Longitude = float.Parse(singleRow[9]);
+                simpleCrime.Longitude = Math.Abs(float.Parse(singleRow[9]));
                 string[] partAge = SplitString(singleRow[11]);
                 string[] partAgeGroup = SplitString(singleRow[12]);
                 string[] partGender = SplitString(singleRow[13]);

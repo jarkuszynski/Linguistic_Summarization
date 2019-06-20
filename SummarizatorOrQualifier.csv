@@ -4,21 +4,24 @@
 #function params according to function type: trian a;m;b, trap a;b;c;d
 summarizators;and
 ogólnie zabojstw;Number of Killed;trap;1,2,7,8;0;8
+mało zabojstw;Number of Killed;trap;1,2,2,3;0;8
+summarizators;or
+mało rannych;Number of Injured;trap;1,2,2,3;0;14
 qualifiers
-na polnocy;Vertical;trian;10,57,57;25;49
-na polnocy;Vertical;trian;0,57,57;25;49
-na polnocy;Vertical;trian;5,57,57;25;49
-na polnocy;Vertical;trian;7,57,57;25;49
-na polnocy;Vertical;trian;10,40,40;25;49
-na południu;Vertical;trian;0,25,25;25;35
-na zachodzie;Horizontal;trian;10,24,24;66;140
+na polnocy1;Vertical;trian;10,57,57;25;49
+na polnocy2;Vertical;trian;0,57,57;25;49
+na polnocy3;Vertical;trian;5,57,57;25;49
+na polnocy4;Vertical;trian;7,57,57;25;49
+na polnocy5;Vertical;trian;10,40,40;25;49
+na południu6;Vertical;trian;0,25,25;25;35
+na zachodzie7;Horizontal;trian;10,24,24;0;98
 quantifiers;relative
 Około połowa;nan;trap;0.3,0.4,0.6,0.7;0;100
 Więcej niż połowa;nan;trian;0.5,1.0,0.8;0;100
 Mniej niż połowa;nan;trian;0.0,0.4,0.25;0;100
 quantifiers;absolute
 Około 5000;nan;trian;100,500,300;0;100
-Około 60000;nan;trian;1100,5500,3300;0;100
+Około 60000;nan;trian;1100,2200,1700;0;100
 Około 50000;nan;trian;1000,5000,3300;0;100
 Około 40000;nan;trian;900,4900,2700;0;100
 Około 30000;nan;trian;800,4000,2000;0;100

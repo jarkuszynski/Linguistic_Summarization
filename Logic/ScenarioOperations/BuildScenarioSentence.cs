@@ -26,7 +26,7 @@ namespace Logic.ScenarioOperations
         {
             AllTValues allTResults = CalculateAllSummarizationValues();
             StringBuilder stringBuilder = new StringBuilder();
-            if (allTResults.T1 <= Threshold)
+            if (allTResults.T1 <= Threshold || allTResults.T1 >= 1)
             {
                 return string.Empty;
             }
@@ -57,7 +57,6 @@ namespace Logic.ScenarioOperations
             allTValues.T3 = CalculateT3();
             allTValues.T4 = CalculateT4(allTValues.T3);
             allTValues.T5 = CalculateT5();
-            allTValues.T1T5 = CalculateT1T5(allTValues);
             allTValues.T6 = CalculateT6();
             allTValues.T7 = CalculateT7();
             allTValues.T8 = CalculateT8();
@@ -179,6 +178,7 @@ namespace Logic.ScenarioOperations
             double resultXq = 1.0;
             if (singleLingusticObject.Quantifier.IsAbsolute)
                 resultXq = singleLingusticObject.Quantifier.X;
+            var t = 1.0 - (singleLingusticObject.Quantifier.MembershipFunction.Support / resultXq);
 
             return 1.0 - (singleLingusticObject.Quantifier.MembershipFunction.Support / resultXq);
 
@@ -189,6 +189,7 @@ namespace Logic.ScenarioOperations
             double resultXq = 1.0;
             if (singleLingusticObject.Quantifier.IsAbsolute)
                 resultXq = singleLingusticObject.Quantifier.X;
+            var t = 1.0 - (singleLingusticObject.Quantifier.MembershipFunction.Cardinality / resultXq);
 
             return 1.0 - (singleLingusticObject.Quantifier.MembershipFunction.Cardinality / resultXq);
         }
