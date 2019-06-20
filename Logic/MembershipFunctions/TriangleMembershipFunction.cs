@@ -29,11 +29,14 @@ namespace Logic.MembershipFunctions
 
         public double GetMembershipFunctionValue(double valueToCalc)
         {
-            if (valueToCalc <= _a || valueToCalc > _b)
+            if (valueToCalc < _a || valueToCalc > _b)
             {
                 return 0.0;
+            } else if (valueToCalc == _m)
+            {
+                return 1.0;
             }
-            else if (_a < valueToCalc && _a <= _m)
+            else if (_a < valueToCalc && valueToCalc <= _m)
             {
                 return (1.0 * (valueToCalc - _a) / (_m - _a));
             }
