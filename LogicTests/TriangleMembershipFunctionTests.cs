@@ -8,7 +8,7 @@ namespace LogicTests
     public class TriangleMembershipFuctionsTests
     {
         [TestMethod]
-        public void TriangleFunction_Triangle08_ShouldBeZeroLeft()
+        public void Triangle08_ShouldBeZeroLeft()
         {
             IMembershipFunction triangleMembershipFunction = new TriangleMembershipFunction(0, 8, 4);
             double expected = 0;
@@ -17,7 +17,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TriangleFunction_Triangle08_ShouldBeOne()
+        public void Triangle08_ShouldBeOne()
         {
             IMembershipFunction triangleMembershipFunction = new TriangleMembershipFunction(0, 8, 4);
             double expected = 1;
@@ -26,7 +26,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TriangleFunction_Triangle08_ShouldBeZeroRight()
+        public void Triangle08_ShouldBeZeroRight()
         {
             IMembershipFunction triangleMembershipFunction = new TriangleMembershipFunction(0, 8, 4);
             double expected = 0;
@@ -35,7 +35,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TriangleFunction_Triangle08_ShouldBeDifferentThan0Or1()
+        public void Triangle08_ShouldBeDifferentThan0Or1()
         {
             IMembershipFunction triangleMembershipFunction = new TriangleMembershipFunction(0, 8, 4);
             double expected = 0.5;
@@ -44,7 +44,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TriangleFunction_Triangle36_ShouldBe0Left()
+        public void Triangle36_ShouldBe0Left()
         {
             IMembershipFunction triangleMembershipFunction = new TriangleMembershipFunction(3, 6, 4);
             double expected = 0;
@@ -53,7 +53,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TriangleFunction_Triangle36_ShouldBe1()
+        public void Triangle36_ShouldBe1()
         {
             IMembershipFunction triangleMembershipFunction = new TriangleMembershipFunction(3, 6, 4);
             double expected = 1;
@@ -62,7 +62,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TriangleFunction_Triangle36_ShouldBe0Right()
+        public void Triangle36_ShouldBe0Right()
         {
             IMembershipFunction triangleMembershipFunction = new TriangleMembershipFunction(3, 6, 4);
             double expected = 0;
@@ -71,7 +71,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TriangleFunction_Triangle36_ShouldBe0_5()
+        public void Triangle36_ShouldBe0_5()
         {
             IMembershipFunction triangleMembershipFunction = new TriangleMembershipFunction(3, 6, 4);
             double expected = 0.5;
@@ -80,7 +80,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TriangleFunction_Triangle36_ShouldBe0LeftOnEdge()
+        public void Triangle36_ShouldBe0LeftOnEdge()
         {
             IMembershipFunction triangleMembershipFunction = new TriangleMembershipFunction(3, 6, 4);
             double expected = 0;
@@ -89,7 +89,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TriangleFunction_Triangle44_ShouldBe1()
+        public void Triangle44_ShouldBe1()
         {
             IMembershipFunction triangleMembershipFunction = new TriangleMembershipFunction(4, 4, 4);
             double expected = 1;
@@ -98,7 +98,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TriangleFunction_Triangle44_ShouldBe0()
+        public void Triangle44_ShouldBe0()
         {
             IMembershipFunction triangleMembershipFunction = new TriangleMembershipFunction(4, 4, 4);
             double expected = 0;

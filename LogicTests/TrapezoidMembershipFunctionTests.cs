@@ -13,7 +13,7 @@ namespace LogicTests
     public class TrapezoidMembershipFunctionTests
     {
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid1245_ShouldBe0Left()
+        public void Trapezoid1245_ShouldBe0Left()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(1, 2, 4, 5);
             double expected = 0;
@@ -22,7 +22,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid1245_ShouldBe0Right5_5()
+        public void Trapezoid1245_ShouldBe0Right5_5()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(1, 2, 4, 5);
             double expected = 0;
@@ -31,7 +31,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid1245_ShouldBe0RightEdge()
+        public void Trapezoid1245_ShouldBe0RightEdge()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(1, 2, 4, 5);
             double expected = 0;
@@ -40,7 +40,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid1245_ShouldBe0_5Left()
+        public void Trapezoid1245_ShouldBe0_5Left()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(1, 2, 4, 5);
             double expected = 0.5;
@@ -49,7 +49,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid1245_ShouldBe0_5Right()
+        public void Trapezoid1245_ShouldBe0_5Right()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(1, 2, 4, 5);
             double expected = 0.5;
@@ -58,7 +58,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid1245_ShouldBe1_2()
+        public void Trapezoid1245_ShouldBe1_2()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(1, 2, 4, 5);
             double expected = 1;
@@ -67,7 +67,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid1245_ShouldBe1_3()
+        public void Trapezoid1245_ShouldBe1_3()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(1, 2, 4, 5);
             double expected = 1;
@@ -76,7 +76,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid1245_ShouldBe1_4()
+        public void Trapezoid1245_ShouldBe1_4()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(1, 2, 4, 5);
             double expected = 1;
@@ -85,7 +85,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid0134_ShouldBe0LeftEdge()
+        public void Trapezoid0134_ShouldBe0LeftEdge()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(0, 1, 3, 4);
             double expected = 0;
@@ -94,7 +94,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid0134_ShouldBe0Left()
+        public void Trapezoid0134_ShouldBe0Left()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(0, 1, 3, 4);
             double expected = 0;
@@ -103,7 +103,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid0134_ShouldBe0_5Left()
+        public void Trapezoid0134_ShouldBe0_5Left()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(0, 1, 3, 4);
             double expected = 0.5;
@@ -112,7 +112,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid0033_ShouldBe1Left()
+        public void Trapezoid0033_ShouldBe1Left()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(0, 0, 3, 3);
             double expected = 1;
@@ -121,7 +121,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid0033_ShouldBe1Right()
+        public void Trapezoid0033_ShouldBe1Right()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(0, 0, 3, 3);
             double expected = 1;
@@ -130,7 +130,7 @@ namespace LogicTests
             Assert.AreEqual(expected, result);
         }
         [TestMethod]
-        public void TrapezoidalMembershipFunction_Trapezoid0033_ShouldBe1Middle()
+        public void Trapezoid0033_ShouldBe1Middle()
         {
             IMembershipFunction trapezoidalMembershipFunction = new TrapezoidalMembershipFunction(0, 0, 3, 3);
             double expected = 1;

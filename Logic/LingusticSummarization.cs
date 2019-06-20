@@ -84,12 +84,31 @@ namespace Logic
         public List<List<Summarizator>> allPossibleSummarizatorCombinations()
         {
             List<List<Summarizator>> SummarizatorsCombinations = new List<List<Summarizator>>();
+            bool shouldAdd = true;
             for (int i = 1; i <= Summarizators.Count; i++)
             {
                 Combinatorics.Collections.Combinations<Summarizator> c = new Combinatorics.Collections.Combinations<Summarizator>(Summarizators, i);
                 foreach (List<Summarizator> v in c)
                 {
-                    SummarizatorsCombinations.Add(v);
+                    foreach (Summarizator s in v)
+                    {
+                        foreach (Summarizator s2 in v)
+                        {
+                            if (s.Equals(s2))
+                            {
+                                continue;
+                            }
+                            if (s.AttributeName == s2.AttributeName)
+                            {
+                                shouldAdd = false;
+                            }
+                        }
+                    }
+                    if (shouldAdd)
+                    {
+                        SummarizatorsCombinations.Add(v);
+                    }
+                    shouldAdd = true;
                 }
             }
             return SummarizatorsCombinations;
