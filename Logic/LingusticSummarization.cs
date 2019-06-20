@@ -22,6 +22,17 @@ namespace Logic
             generateMixedLinqusticObjects();
 
         }
+        public LingusticSummarization(List<Qualifier> qualifiers, List<Quantifier> quantifiers, List<Summarizator> summarizators, OperationType op)
+        {
+            Qualifiers = qualifiers;
+            Quantifiers = quantifiers;
+            Summarizators = summarizators;
+            CrimesList = ReadAllData.ReadData();
+            AllSummarizationScenario = new List<SingleLingusticObject>();
+            operationBetweenSummarizators = op;
+            generateMixedLinqusticObjects();
+
+        }
         public OperationType operationType { get; set; }
 
         public List<Qualifier> Qualifiers { get; set; }
@@ -29,13 +40,15 @@ namespace Logic
         public List<Summarizator> Summarizators { get; set; }
         public static List<SingleCrimeInfo> CrimesList { get; set; }
         public List<SingleLingusticObject> AllSummarizationScenario { get; set; }
+
+        private OperationType operationBetweenSummarizators;
         public static List<SingleCrimeInfo> data;
         public List<string> results(double threshold)
         {
             List<string> vs = new List<string>();
             foreach (var item in AllSummarizationScenario)
             {
-                BuildScenarioSentence buildScenarioSentence = new BuildScenarioSentence(item, threshold);
+                BuildScenarioSentence buildScenarioSentence = new BuildScenarioSentence(item, threshold, operationBetweenSummarizators);
                 vs.Add(buildScenarioSentence.GetScenarioResult());
             }
             return vs;
@@ -63,7 +76,7 @@ namespace Logic
                         {
                             foreach (List<Summarizator> summarizators in summarizatorCombinations)
                             {
-                                allPossibleSingleLingusticObjects.Add(new SingleLingusticObject(summarizators, quantifier, qualifier, operationType));
+                                allPossibleSingleLingusticObjects.Add(new SingleLingusticObject(summarizators, quantifier, qualifier, operationBetweenSummarizators));
                             }
                         }
                     }
@@ -72,7 +85,7 @@ namespace Logic
                 {
                     foreach (List<Summarizator> summarizators in summarizatorCombinations)
                     {
-                        allPossibleSingleLingusticObjects.Add(new SingleLingusticObject(summarizators, quantifier, null, operationType));
+                        allPossibleSingleLingusticObjects.Add(new SingleLingusticObject(summarizators, quantifier, null, operationBetweenSummarizators));
                     }
                 }
 

@@ -27,10 +27,6 @@
                          HorizontalAlignment="Stretch" 
                          Background="White" 
                          Text="{Binding Description}"/>
-                    <StackPanel HorizontalAlignment="Left" Margin="30,0" Orientation="Horizontal">
-                        <Label Content="Czy bezwględny?"></Label>
-                        <CheckBox IsChecked="{Binding IsAbsolute}"></CheckBox>
-                    </StackPanel>
                     <TextBlock Text="Dostępne atrybuty"></TextBlock>
                     <ScrollViewer VerticalScrollBarVisibility="Auto"
                                       Height="100">

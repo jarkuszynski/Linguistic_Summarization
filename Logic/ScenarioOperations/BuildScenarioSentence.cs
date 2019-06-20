@@ -13,14 +13,18 @@ namespace Logic.ScenarioOperations
     {
         private List<double> _summarizationResults = new List<double>();
         private List<double> _qualifierResults = new List<double>();
-        private SingleLingusticObject singleLingusticObject;
-        public double Threshold { get; set; }
-        public SingleLingusticObject SingleLingusticObject { get => singleLingusticObject; set => singleLingusticObject = value; }
 
-        public BuildScenarioSentence(SingleLingusticObject singleObject, double threshold)
+        public double Threshold { get; set; }
+
+        private OperationType operationBetweenSummarizators;
+
+        public SingleLingusticObject SingleLingusticObject { get; set; }
+
+        public BuildScenarioSentence(SingleLingusticObject singleObject, double threshold, OperationType operationBetweenSummarizators)
         {
             SingleLingusticObject = singleObject;
             Threshold = threshold;
+            this.operationBetweenSummarizators = operationBetweenSummarizators;
         }
 
         public string GetScenarioResult()
@@ -79,7 +83,7 @@ namespace Logic.ScenarioOperations
             OperationType operation = SingleLingusticObject.operation;
             foreach (var singleDataCrime in LingusticSummarization.CrimesList)
             {
-                double bestValue = FuzzySetOperations.PerformCalculationsBetweenGivenSummarizators(SingleLingusticObject.Summarizators, singleDataCrime, operation);
+                double bestValue = FuzzySetOperations.PerformCalculationsBetweenGivenSummarizators(SingleLingusticObject.Summarizators, singleDataCrime, operationBetweenSummarizators);
                 _summarizationResults.Add(bestValue);
                 fullSum += bestValue;
             }
@@ -95,7 +99,7 @@ namespace Logic.ScenarioOperations
             OperationType operation = SingleLingusticObject.operation;
             foreach (var singleDataCrime in LingusticSummarization.CrimesList)
             {
-                double bestValue = FuzzySetOperations.PerformCalculationsBetweenGivenSummarizators(SingleLingusticObject.Summarizators, singleDataCrime, operation);
+                double bestValue = FuzzySetOperations.PerformCalculationsBetweenGivenSummarizators(SingleLingusticObject.Summarizators, singleDataCrime, operationBetweenSummarizators);
                 _summarizationResults.Add(bestValue);
                 double qualifierValue = SingleLingusticObject.Qualifier.MembershipFunction.GetMembershipFunctionValue(singleDataCrime.GetAttributeValue(SingleLingusticObject.Qualifier.AttributeName));
                 _qualifierResults.Add(qualifierValue);
@@ -235,10 +239,10 @@ namespace Logic.ScenarioOperations
         private double CalculateT1T11(AllTValues allTValues)
         {
             return
-                (1.0 / 11.0) * allTValues.T1 + (1.0 / 11.0) * allTValues.T2 + (1.0 / 11.0) * allTValues.T3 +
-                (1.0 / 11.0) * allTValues.T4 + (1.0 / 11.0) * allTValues.T5 + (1.0 / 11.0) * allTValues.T6 +
-                (1.0 / 11.0) * allTValues.T7 + (1.0 / 11.0) * allTValues.T8 + (1.0 / 11.0) * allTValues.T9 +
-                (1.0 / 11.0) * allTValues.T10 + (1.0 / 11.0) * allTValues.T11;
+                (allTValues.T1 + allTValues.T2 + allTValues.T3 +
+                allTValues.T4 + allTValues.T5 + allTValues.T6 +
+                allTValues.T7 + allTValues.T8 + allTValues.T9 +
+                allTValues.T10 + allTValues.T11) * (1.0 / 11.0);
         }
 
 

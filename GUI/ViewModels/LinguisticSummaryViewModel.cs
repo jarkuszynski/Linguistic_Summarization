@@ -78,7 +78,7 @@ namespace GUI.ViewModels
 
             GenerationStep = "Generating summaries";
 
-            LingusticSummarization linguisticSummaries = new LingusticSummarization(quals, quants, summs);
+            LingusticSummarization linguisticSummaries = new LingusticSummarization(quals, quants, summs, logicalOperation);
 
             var results = linguisticSummaries.results(_t1Threshold);
             string workingDirectory = Environment.CurrentDirectory;
