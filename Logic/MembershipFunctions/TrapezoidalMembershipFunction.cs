@@ -26,12 +26,13 @@ namespace Logic.MembershipFunctions
 
         public double GetMembershipFunctionValue(double valueToCalc)
         {
-            if (valueToCalc >= 5)
-            {
-            }
             if (valueToCalc < _a || valueToCalc > _d)
             {
                 return 0.0;
+            }
+            else if(_a == _b || _c == _d)
+            {
+                return 1.0;
             }
 
             else if (_a <= valueToCalc && valueToCalc <= _b)
