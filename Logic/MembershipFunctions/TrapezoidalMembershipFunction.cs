@@ -44,11 +44,11 @@ namespace Logic.MembershipFunctions
                 return 1.0;
             }
 
-            else if (_c >= valueToCalc && valueToCalc <= _d)
+            else if (_c <= valueToCalc && valueToCalc <= _d)
             {
                 return (1.0 * (_d - valueToCalc) / (_d - _c));
             }
-            else
+            else 
             {
                 return 0.0;
             }

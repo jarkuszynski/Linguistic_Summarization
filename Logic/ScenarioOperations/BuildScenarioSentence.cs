@@ -15,10 +15,11 @@ namespace Logic.ScenarioOperations
         private List<double> _qualifierResults = new List<double>();
         private SingleLingusticObject singleLingusticObject;
         public double Threshold { get; set; }
+        public SingleLingusticObject SingleLingusticObject { get => singleLingusticObject; set => singleLingusticObject = value; }
 
         public BuildScenarioSentence(SingleLingusticObject singleObject, double threshold)
         {
-            singleLingusticObject = singleObject;
+            SingleLingusticObject = singleObject;
             Threshold = threshold;
         }
 
@@ -30,7 +31,7 @@ namespace Logic.ScenarioOperations
             {
                 return string.Empty;
             }
-            stringBuilder.Append(singleLingusticObject.BuildResultSentence() + " ");
+            stringBuilder.Append(SingleLingusticObject.BuildResultSentence() + " ");
             stringBuilder.Append("[T1: " + Math.Truncate( allTResults.T1 * 1000.0) / 1000.0 + "] ");
             stringBuilder.Append("[T2: " + Math.Truncate(allTResults.T2 * 1000.0) / 1000.0 + "] ");
             stringBuilder.Append("[T3: " + Math.Truncate(allTResults.T3 * 1000.0) / 1000.0 + "] ");
@@ -39,7 +40,7 @@ namespace Logic.ScenarioOperations
             stringBuilder.Append("[T6: " + Math.Truncate(allTResults.T6 * 1000.0) / 1000.0 + "] ");
             stringBuilder.Append("[T7: " + Math.Truncate(allTResults.T7 * 1000.0) / 1000.0 + "] ");
             stringBuilder.Append("[T8: " + Math.Truncate(allTResults.T8 * 1000.0) / 1000.0 + "] ");
-            if (singleLingusticObject.Qualifier != null)
+            if (SingleLingusticObject.Qualifier != null)
             {
                 stringBuilder.Append("[T9: " + Math.Truncate(allTResults.T9 * 1000.0) / 1000.0 + "] ");
                 stringBuilder.Append("[T10: " + Math.Truncate(allTResults.T10 * 1000.0) / 1000.0 + "] ");
@@ -70,33 +71,33 @@ namespace Logic.ScenarioOperations
 
         private double CalculateT1()
         {
-            return singleLingusticObject.isAbsolute ? CalculateT1AbsoluteSummarization() : CalculateT1RelativeSummarization();
+            return SingleLingusticObject.isAbsolute ? CalculateT1AbsoluteSummarization() : CalculateT1RelativeSummarization();
         }
         public double CalculateT1AbsoluteSummarization()
         {
             double fullSum = 0.0;
-            OperationType operation = singleLingusticObject.operation;
+            OperationType operation = SingleLingusticObject.operation;
             foreach (var singleDataCrime in LingusticSummarization.CrimesList)
             {
-                double bestValue = FuzzySetOperations.PerformCalculationsBetweenGivenSummarizators(singleLingusticObject.Summarizators, singleDataCrime, operation);
+                double bestValue = FuzzySetOperations.PerformCalculationsBetweenGivenSummarizators(SingleLingusticObject.Summarizators, singleDataCrime, operation);
                 _summarizationResults.Add(bestValue);
                 fullSum += bestValue;
             }
             double r = fullSum;
-            return singleLingusticObject.Quantifier.IsAbsolute ?
-                singleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r) :
-                singleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r / LingusticSummarization.CrimesList.Count);
+            return SingleLingusticObject.Quantifier.IsAbsolute ?
+                SingleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r) :
+                SingleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r / LingusticSummarization.CrimesList.Count);
         }
         public double CalculateT1RelativeSummarization()
         {
             double numerator = 0.0;
             double denumertor = 0.0;
-            OperationType operation = singleLingusticObject.operation;
+            OperationType operation = SingleLingusticObject.operation;
             foreach (var singleDataCrime in LingusticSummarization.CrimesList)
             {
-                double bestValue = FuzzySetOperations.PerformCalculationsBetweenGivenSummarizators(singleLingusticObject.Summarizators, singleDataCrime, operation);
+                double bestValue = FuzzySetOperations.PerformCalculationsBetweenGivenSummarizators(SingleLingusticObject.Summarizators, singleDataCrime, operation);
                 _summarizationResults.Add(bestValue);
-                double qualifierValue = singleLingusticObject.Qualifier.MembershipFunction.GetMembershipFunctionValue(singleDataCrime.GetAttributeValue(singleLingusticObject.Qualifier.AttributeName));
+                double qualifierValue = SingleLingusticObject.Qualifier.MembershipFunction.GetMembershipFunctionValue(singleDataCrime.GetAttributeValue(SingleLingusticObject.Qualifier.AttributeName));
                 _qualifierResults.Add(qualifierValue);
 
                 numerator += Math.Min(bestValue, qualifierValue);
@@ -112,27 +113,27 @@ namespace Logic.ScenarioOperations
                 Console.WriteLine();
             }
             r = numerator / denumertor;
-            var t = singleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r);
+            var t = SingleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r);
             if (t > 0)
             {
                 Console.WriteLine();
             }
-            return singleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r);
+            return SingleLingusticObject.Quantifier.MembershipFunction.GetMembershipFunctionValue(r);
         }
 
         private double CalculateT2()
         {
             double result = 1.0;
-            foreach (var summarizer in singleLingusticObject.Summarizators)
+            foreach (var summarizer in SingleLingusticObject.Summarizators)
             {
                 result *= summarizer.DegreeOfFuzziness();
             }
-            return 1.0 - Math.Pow(result, 1.0 / singleLingusticObject.Summarizators.Count);
+            return 1.0 - Math.Pow(result, 1.0 / SingleLingusticObject.Summarizators.Count);
         }
 
         private double CalculateT3()
         {
-            if (singleLingusticObject.Qualifier != null)
+            if (SingleLingusticObject.Qualifier != null)
             {
                 double sumT = _summarizationResults.Zip(_qualifierResults, (a, b) => a > 0.0 && b > 0.0)
                     .Count(t => t);
@@ -150,7 +151,7 @@ namespace Logic.ScenarioOperations
         private double CalculateT4(double t3)
         {
             double resultS = 1.0;
-            foreach (var summarizer in singleLingusticObject.Summarizators)
+            foreach (var summarizer in SingleLingusticObject.Summarizators)
             {
                 double resultG = 0.0;
                 foreach (SingleCrimeInfo singleCrime in LingusticSummarization.CrimesList)
@@ -164,7 +165,7 @@ namespace Logic.ScenarioOperations
 
         private double CalculateT5()
         {
-            return 2.0 * Math.Pow(1.0 / 2.0, singleLingusticObject.Summarizators.Count);
+            return 2.0 * Math.Pow(1.0 / 2.0, SingleLingusticObject.Summarizators.Count);
         }
 
         private double CalculateT1T5(AllTValues allTValues)
@@ -176,57 +177,57 @@ namespace Logic.ScenarioOperations
         private double CalculateT6()
         {
             double resultXq = 1.0;
-            if (singleLingusticObject.Quantifier.IsAbsolute)
-                resultXq = singleLingusticObject.Quantifier.X;
-            var t = 1.0 - (singleLingusticObject.Quantifier.MembershipFunction.Support / resultXq);
+            if (SingleLingusticObject.Quantifier.IsAbsolute)
+                resultXq = SingleLingusticObject.Quantifier.X;
+            var t = 1.0 - (SingleLingusticObject.Quantifier.MembershipFunction.Support / resultXq);
 
-            return 1.0 - (singleLingusticObject.Quantifier.MembershipFunction.Support / resultXq);
+            return 1.0 - (SingleLingusticObject.Quantifier.MembershipFunction.Support / resultXq);
 
         }
 
         private double CalculateT7()
         {
             double resultXq = 1.0;
-            if (singleLingusticObject.Quantifier.IsAbsolute)
-                resultXq = singleLingusticObject.Quantifier.X;
-            var t = 1.0 - (singleLingusticObject.Quantifier.MembershipFunction.Cardinality / resultXq);
+            if (SingleLingusticObject.Quantifier.IsAbsolute)
+                resultXq = SingleLingusticObject.Quantifier.X;
+            var t = 1.0 - (SingleLingusticObject.Quantifier.MembershipFunction.Cardinality / resultXq);
 
-            return 1.0 - (singleLingusticObject.Quantifier.MembershipFunction.Cardinality / resultXq);
+            return 1.0 - (SingleLingusticObject.Quantifier.MembershipFunction.Cardinality / resultXq);
         }
 
         private double CalculateT8()
         {
             double resultS = 1.0;
-            foreach (var summarizer in singleLingusticObject.Summarizators)
+            foreach (var summarizer in SingleLingusticObject.Summarizators)
             {
                 resultS *= summarizer.MembershipFunction.Cardinality / summarizer.X;
             }
-            return 1.0 - Math.Pow(resultS, 1.0 / singleLingusticObject.Summarizators.Count);
+            return 1.0 - Math.Pow(resultS, 1.0 / SingleLingusticObject.Summarizators.Count);
         }
 
         private double CalculateT9()
         {
             double resultS = 1.0;
-            if (singleLingusticObject.Qualifier != null)
+            if (SingleLingusticObject.Qualifier != null)
             {
-                resultS = singleLingusticObject.Qualifier.DegreeOfFuzziness();
+                resultS = SingleLingusticObject.Qualifier.DegreeOfFuzziness();
             }
-            return 1.0 - Math.Pow(resultS, 1.0 / singleLingusticObject.Summarizators.Count);
+            return 1.0 - Math.Pow(resultS, 1.0 / SingleLingusticObject.Summarizators.Count);
         }
 
         private double CalculateT10()
         {
             double resultS = 1.0;
-            if (singleLingusticObject.Qualifier != null)
+            if (SingleLingusticObject.Qualifier != null)
             {
-                resultS = singleLingusticObject.Qualifier.MembershipFunction.Cardinality / singleLingusticObject.Qualifier.X;
+                resultS = SingleLingusticObject.Qualifier.MembershipFunction.Cardinality / SingleLingusticObject.Qualifier.X;
             }
             return 1.0 - resultS;
         }
 
         private double CalculateT11()
         {
-            if(singleLingusticObject.Qualifier != null)
+            if(SingleLingusticObject.Qualifier != null)
                 return 2.0 * Math.Pow(1.0 / 2.0, 1.0);
             return 0.0;
         }

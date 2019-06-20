@@ -21,11 +21,11 @@ namespace ConsoleApp
             SentenceTuple sentenceTuple = SentenceElementsFileReader.getSentenceElementsFromFile();
             LingusticSummarization lingusticSummarization = new LingusticSummarization(sentenceTuple.Qualifiers, sentenceTuple.Quantifiers, sentenceTuple.Summarizators);
             //List<string> d = lingusticSummarization.results();
-            foreach (var item in d)
-            {
-                if(item != string.Empty)
-                    Console.WriteLine(item);
-            }
+            //foreach (var item in d)
+            //{
+            //    if(item != string.Empty)
+            //        Console.WriteLine(item);
+            //}
             Console.Read();
         }
     }

@@ -51,9 +51,20 @@
   <ItemGroup>
     <Compile Include="MembershipFunctionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TValuesTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CsvDataGetter\CsvDataGetter.csproj">
+      <Project>{5DBBFE98-31A5-43C2-A366-0EDEA1C3E5BA}</Project>
+      <Name>CsvDataGetter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{9AE4287B-6586-4C88-8464-2C9751DF70EE}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

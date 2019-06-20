@@ -33,7 +33,7 @@ namespace Logic.MembershipFunctions
             {
                 return 0.0;
             }
-            else if (_a < valueToCalc && _a <= _m)
+            else if (_a < valueToCalc && valueToCalc <= _m)
             {
                 return (1.0 * (valueToCalc - _a) / (_m - _a));
             }
