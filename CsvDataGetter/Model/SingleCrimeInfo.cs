@@ -74,7 +74,7 @@ namespace CsvDataGetter.Model
             return availableProperties;
         }
 
-        private double GetDatePeriodFraction()
+        public double GetDatePeriodFraction()
         {
             return (Date - BeginDate).TotalDays;
         }
@@ -82,7 +82,7 @@ namespace CsvDataGetter.Model
         /// 
         /// </summary>
         /// <returns>Returns relative latitude from south side of USA - as bigger then norther</returns>
-        private double GetVerticalGeoSide()
+        public double GetVerticalGeoSide()
         {
             return 1.0 * -_southEndCoord + Latitude;
         }
@@ -90,12 +90,15 @@ namespace CsvDataGetter.Model
         /// 
         /// </summary>
         /// <returns>Returns relative longitude from east side of USA - as bigger then wester</returns>
-        private double GetHorizontalGeoSide()
+        public double GetHorizontalGeoSide()
         {
             return 1.0 * _eastEndCoord + Math.Abs(Longitude);
         }
-
-        private double GetParticipantTypeFraction()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns> 0 - 0.9 as bigger then more victims than suspects </returns>
+        public double GetParticipantTypeFraction()
         {
             int numberOfVictims = 0;
             int numberOfSubjectSuspects = 0;
@@ -127,7 +130,10 @@ namespace CsvDataGetter.Model
             //returns fraction between woman and man participants	
             return fraction;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns> 0 0.9 as bigger than more mature participians</returns>
         private double GetAgeGroupFraction()
         {
             int numberOfMatureParticipants = 0;
@@ -160,7 +166,10 @@ namespace CsvDataGetter.Model
             //returns fraction between woman and man participants	
             return fraction;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>as bigger than bigger average participians age</returns>
         public double GetAverageParticipantsAge()
         {
             double averageAge = 0.0;
@@ -175,15 +184,10 @@ namespace CsvDataGetter.Model
             return averageAge / ParticipantsInfo.Count;
         }
 
-        private double GetKnownGunTypeFraction()
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// 
         /// </summary>
-        /// <returns>Degrees/100 of Unknown/KnownOrigin</returns>
+        /// <returns>0 0.9 as bigger than more weapons with uknown origins</returns>
         private double GetKnownGunStatusFraction()
         {
             int numberOfKnownOrigin = 0;
@@ -216,7 +220,10 @@ namespace CsvDataGetter.Model
             //returns fraction between woman and man participants
             return fraction;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>0 09 as bigger then more man</returns>
         public double GetGenderFraction()
         {
             int numberOfMan = 0;

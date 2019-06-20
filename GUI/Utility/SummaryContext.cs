@@ -24,10 +24,10 @@ namespace GUI.Utility
 
         public SummaryContext()
         {
+            SingleCrimeInfos = LingusticSummarization.CrimesList;
             Quantifiers = new List<CheckableQuantifier>();
             Summarizators = new List<CheckableSummarizator>();
             Qualifiers = new List<CheckableQualifier>();
-            SingleCrimeInfos = LingusticSummarization.CrimesList;
         }
 
     }

@@ -172,12 +172,6 @@ namespace Logic.ScenarioOperations
             return 2.0 * Math.Pow(1.0 / 2.0, SingleLingusticObject.Summarizators.Count);
         }
 
-        private double CalculateT1T5(AllTValues allTValues)
-        {
-            return 0.2 * allTValues.T1 + 0.2 * allTValues.T2 + 0.2 * allTValues.T3 + 0.2 * allTValues.T4 +
-                            0.2 * allTValues.T5;
-        }
-
         private double CalculateT6()
         {
             double resultXq = 1.0;

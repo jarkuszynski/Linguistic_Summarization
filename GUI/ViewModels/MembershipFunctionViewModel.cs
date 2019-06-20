@@ -2,6 +2,7 @@
 using Logic.MembershipFunctions;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,10 +44,10 @@ namespace GUI.ViewModels
             {
                 case "trapezoidal":
                     if (memParams.Length != 4) return null;
-                    return new TrapezoidalMembershipFunction(double.Parse(memParams[0]), double.Parse(memParams[1]), double.Parse(memParams[2]), double.Parse(memParams[3]));
+                    return new TrapezoidalMembershipFunction(double.Parse(memParams[0], CultureInfo.InvariantCulture), double.Parse(memParams[1], CultureInfo.InvariantCulture), double.Parse(memParams[2], CultureInfo.InvariantCulture), double.Parse(memParams[3], CultureInfo.InvariantCulture));
                 case "triangular":
                     if (memParams.Length != 3) return null;
-                    return new TriangleMembershipFunction(double.Parse(memParams[0]), double.Parse(memParams[1]), double.Parse(memParams[2]));
+                    return new TriangleMembershipFunction(double.Parse(memParams[0], CultureInfo.InvariantCulture), double.Parse(memParams[1], CultureInfo.InvariantCulture), double.Parse(memParams[2], CultureInfo.InvariantCulture));
             }
 
             return null;

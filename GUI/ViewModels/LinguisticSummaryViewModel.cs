@@ -62,7 +62,7 @@ namespace GUI.ViewModels
             QuantifiersCount = SummaryContext.Instance.Quantifiers.Count(quan => quan.IsChecked);
             string workingDirectory = Environment.CurrentDirectory;
             string filepath = Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\ksr.db";
-            LingusticSummarization = new LingusticSummarization(SummaryContext.Instance.Qualifiers.Where(q => q.IsChecked).Select(q => q.Qualifier).ToList(), SummaryContext.Instance.Quantifiers.Where(q => q.IsChecked).Select(q => q.Quantifier).ToList(), SummaryContext.Instance.Summarizators.Where(q => q.IsChecked).Select(s => s.Summarizator).ToList());
+            //LingusticSummarization = new LingusticSummarization(SummaryContext.Instance.Qualifiers.Where(q => q.IsChecked).Select(q => q.Qualifier).ToList(), SummaryContext.Instance.Quantifiers.Where(q => q.IsChecked).Select(q => q.Quantifier).ToList(), SummaryContext.Instance.Summarizators.Where(q => q.IsChecked).Select(s => s.Summarizator).ToList());
 
             GenerateLingusiticSummary = new AsyncCommand(async () =>
                 await Task.Run(() => GenerateFormSummary()));
@@ -70,17 +70,17 @@ namespace GUI.ViewModels
 
         private void GenerateFormSummary()
         {
+            var logicalOperation = _summarizersOperation;
+            LingusticSummarization lingusticSummarization = new LingusticSummarization(logicalOperation);
             var quants = SummaryContext.Instance.Quantifiers.Where(q => q.IsChecked).Select(q => q.Quantifier).ToList();
             var quals = SummaryContext.Instance.Qualifiers.Where(q => q.IsChecked).Select(q => q.Qualifier).ToList();
             var summs = SummaryContext.Instance.Summarizators.Where(q => q.IsChecked).Select(s => s.Summarizator).ToList();
-            var logicalOperation = _summarizersOperation;
-            var singleCrimeInfos = SummaryContext.Instance.SingleCrimeInfos;
+            lingusticSummarization.Qualifiers = quals;
+            lingusticSummarization.Quantifiers = quants;
+            lingusticSummarization.Summarizators = summs;
+            lingusticSummarization.generateMixedLinqusticObjects();
 
-            GenerationStep = "Generating summaries";
-
-            LingusticSummarization linguisticSummaries = new LingusticSummarization(quals, quants, summs, logicalOperation);
-
-            var results = linguisticSummaries.results(_t1Threshold);
+            var results = lingusticSummarization.results(_t1Threshold);
             string workingDirectory = Environment.CurrentDirectory;
             string filepath = Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\results.txt";
             SaveAllData.SaveToFile(results, filepath);

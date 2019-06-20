@@ -22,13 +22,21 @@ namespace Logic
             generateMixedLinqusticObjects();
 
         }
+
+        public LingusticSummarization(OperationType op)
+        {
+            operationBetweenSummarizators = op;
+            CrimesList = ReadAllData.ReadData();
+            AllSummarizationScenario = new List<SingleLingusticObject>();
+        }
+
         public LingusticSummarization(List<Qualifier> qualifiers, List<Quantifier> quantifiers, List<Summarizator> summarizators, OperationType op)
         {
             Qualifiers = qualifiers;
             Quantifiers = quantifiers;
             Summarizators = summarizators;
+
             CrimesList = ReadAllData.ReadData();
-            AllSummarizationScenario = new List<SingleLingusticObject>();
             operationBetweenSummarizators = op;
             generateMixedLinqusticObjects();
 

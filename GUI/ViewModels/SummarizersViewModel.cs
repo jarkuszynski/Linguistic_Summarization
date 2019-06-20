@@ -33,23 +33,6 @@ namespace GUI.ViewModels
             set => SetProperty(ref _description, value);
         }
 
-        private double _xMin = 0d;
-
-        public double XMin
-        {
-            get => _xMin;
-            set => SetProperty(ref _xMin, value);
-        }
-
-        private double _xMax = 100d;
-
-        public double XMax
-        {
-            get => _xMax;
-            set => SetProperty(ref _xMax, value);
-        }
-
-
         public SummarizersViewModel()
         {
             MembershipFunctionView = new MembershipFunctionViewModel();
@@ -83,7 +66,7 @@ namespace GUI.ViewModels
                     return;
                 }
 
-                var summ = new Summarizator(Description, at.Name, memFun, XMin, XMax);
+                var summ = new Summarizator(Description, at.Name, memFun);
                 var checkableSumm = new CheckableSummarizator(summ, true);
 
 

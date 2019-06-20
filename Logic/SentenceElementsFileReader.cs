@@ -87,8 +87,6 @@ namespace CsvDataGetter
                     string attributeName = singleRow[1];
                     string functionType = singleRow[2];
                     string[] functionParametres = singleRow[3].Split(',');
-                    int minValue = int.Parse(singleRow[4]);
-                    int maxValue = int.Parse(singleRow[5]);
                     if (functionType == "trian")
                     {
                         membershipFunction = new TriangleMembershipFunction(double.Parse(functionParametres[0], CultureInfo.InvariantCulture), double.Parse(functionParametres[1],CultureInfo.InvariantCulture), double.Parse(functionParametres[2], CultureInfo.InvariantCulture));
@@ -103,25 +101,19 @@ namespace CsvDataGetter
                             summarizators.Add(new Summarizator(
                                 description,
                                 attributeName,
-                                membershipFunction,
-                                minValue,
-                                maxValue));
+                                membershipFunction));
                             break;
                         case ElementType.Qualifier:
                             qualifiers.Add(new Qualifier(
                                 description,
                                 attributeName,
-                                membershipFunction,
-                                minValue,
-                                maxValue));
+                                membershipFunction));
                             break;
                         case ElementType.Quantifier:
                             quantifiers.Add(new Quantifier(
                                 description,
                                 membershipFunction,
-                                quantifierType,
-                                minValue,
-                                maxValue));
+                                quantifierType));
                             break;
                             
                     }

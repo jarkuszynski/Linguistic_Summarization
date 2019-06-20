@@ -33,6 +33,7 @@ namespace GUI.ViewModels
             Save = new RelayCommand(SaveFuzzySetsToFile);
 
             //default file
+
             SentenceTuple sentenceTuple = SentenceElementsFileReader.getSentenceElementsFromFile();
             SummaryContext.Instance.Quantifiers.AddRange(sentenceTuple.Quantifiers.Select(q => new Model.CheckableQuantifier(q, true)));
             SummaryContext.Instance.Qualifiers.AddRange(sentenceTuple.Qualifiers.Select(q => new Model.CheckableQualifier(q, true)));

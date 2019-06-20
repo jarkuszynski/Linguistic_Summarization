@@ -32,22 +32,6 @@ namespace GUI.ViewModels
             set => SetProperty(ref _description, value);
         }
 
-        private double _xMin = 0d;
-
-        public double XMin
-        {
-            get => _xMin;
-            set => SetProperty(ref _xMin, value);
-        }
-
-        private double _xMax = 100d;
-
-        public double XMax
-        {
-            get => _xMax;
-            set => SetProperty(ref _xMax, value);
-        }
-
         private bool _isAbsolute = false;
 
         public bool IsAbsolute
@@ -83,7 +67,7 @@ namespace GUI.ViewModels
                 return;
             }
 
-            var quan = new Quantifier(Description, memFun, IsAbsolute ? QuantifierType.Absolute : QuantifierType.Relative, XMin, XMax);
+            var quan = new Quantifier(Description, memFun, IsAbsolute ? QuantifierType.Absolute : QuantifierType.Relative);
             var checkableQuan = new CheckableQuantifier(quan, true);
 
 
