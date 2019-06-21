@@ -31,6 +31,8 @@ namespace LogicTests
             crimesList.Add(c2);
             crimesList.Add(c3);
             membershipFunction = new TriangleMembershipFunction(5, 7, 6);
+            Summarizator s1 = new Summarizator("duzo zabojstw", "Number of Killed", membershipFunction);
+            
         }
         [TestMethod]
         public void Triangle_Support_ShouldBeOk()

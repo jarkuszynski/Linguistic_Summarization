@@ -17,18 +17,16 @@ namespace CsvDataGetter
         public List<Qualifier> Qualifiers = new List<Qualifier>();
         public List<Quantifier> Quantifiers = new List<Quantifier>();
         public List<Summarizator> Summarizators = new List<Summarizator>();
-        OperationType operation = OperationType.And;
 
         public SentenceTuple()
         {
         }
 
-        public SentenceTuple(List<Qualifier> qualifiers, List<Quantifier> quantifiers, List<Summarizator> summarizators, OperationType op)
+        public SentenceTuple(List<Qualifier> qualifiers, List<Quantifier> quantifiers, List<Summarizator> summarizators)
         {
             Qualifiers = qualifiers;
             Quantifiers = quantifiers;
             Summarizators = summarizators;
-            operation = op;
         }
     }
     enum ElementType
@@ -55,7 +53,6 @@ namespace CsvDataGetter
                 csvParser.HasFieldsEnclosedInQuotes = false;
                 csvParser.ReadLine();
                 var parsingMode = ElementType.Summarizator;
-                var currentLogicalOperator = OperationType.And;
                 Quantifier.QuantifierType quantifierType = Quantifier.QuantifierType.Relative;
 
                 while (!csvParser.EndOfData)
@@ -69,7 +66,6 @@ namespace CsvDataGetter
                     if (singleRow[0].Contains("summarizators"))
                     {
                         parsingMode = ElementType.Summarizator;
-                        currentLogicalOperator = (singleRow[1] == OperationType.And.ToString().ToLowerInvariant()) ? OperationType.And : OperationType.Or;
                         continue;
                     }
                     else if (singleRow[0] == "qualifiers")
@@ -119,7 +115,7 @@ namespace CsvDataGetter
                     }
 
                 }
-            return new SentenceTuple(qualifiers, quantifiers, summarizators, currentLogicalOperator);
+            return new SentenceTuple(qualifiers, quantifiers, summarizators);
             }
         }
         public static void SaveFuzzySetsToFile(

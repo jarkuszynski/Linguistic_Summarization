@@ -1,11 +1,10 @@
-﻿using Logic.LinguisticSummarization;
+﻿using CsvDataGetter.Model;
+using Logic.LinguisticSummarization;
 using Logic.Operations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using CsvDataGetter.Model;
 
 namespace Logic.ScenarioOperations
 {
@@ -36,7 +35,7 @@ namespace Logic.ScenarioOperations
                 return string.Empty;
             }
             stringBuilder.Append(SingleLingusticObject.BuildResultSentence() + " ");
-            stringBuilder.Append("[T1: " + Math.Truncate( allTResults.T1 * 1000.0) / 1000.0 + "] ");
+            stringBuilder.Append("[T1: " + Math.Truncate(allTResults.T1 * 1000.0) / 1000.0 + "] ");
             stringBuilder.Append("[T2: " + Math.Truncate(allTResults.T2 * 1000.0) / 1000.0 + "] ");
             stringBuilder.Append("[T3: " + Math.Truncate(allTResults.T3 * 1000.0) / 1000.0 + "] ");
             stringBuilder.Append("[T4: " + Math.Truncate(allTResults.T4 * 1000.0) / 1000.0 + "] ");
@@ -108,7 +107,7 @@ namespace Logic.ScenarioOperations
                 denumertor += qualifierValue;
             }
             double r;
-            if( denumertor == 0)
+            if (denumertor == 0)
             {
                 return 0.0;
             }
@@ -225,7 +224,7 @@ namespace Logic.ScenarioOperations
 
         private double CalculateT11()
         {
-            if(SingleLingusticObject.Qualifier != null)
+            if (SingleLingusticObject.Qualifier != null)
                 return 2.0 * Math.Pow(1.0 / 2.0, 1.0);
             return 0.0;
         }
