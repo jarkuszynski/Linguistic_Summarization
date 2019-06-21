@@ -40,18 +40,16 @@ namespace GUI.ViewModels
             }
         }
 
-        private string _generationStep;
-
-        public string GenerationStep
-        {
-            get => _generationStep;
-            set => SetProperty(ref _generationStep, value);
-        }
-
         public int SummarizatorsCount { get; }
         public int QualifiersCount { get; }
         public int QuantifiersCount { get; }
 
+        private string _isDone;
+        public string isDone
+        {
+            get => _isDone;
+            set => SetProperty(ref _isDone, value);
+        }
 
         public AsyncCommand GenerateLingusiticSummary { get; }
 
@@ -70,6 +68,7 @@ namespace GUI.ViewModels
 
         private void GenerateFormSummary()
         {
+            isDone = "Liczę...";
             var logicalOperation = _summarizersOperation;
             LingusticSummarization lingusticSummarization = new LingusticSummarization(logicalOperation);
             var quants = SummaryContext.Instance.Quantifiers.Where(q => q.IsChecked).Select(q => q.Quantifier).ToList();
@@ -79,11 +78,11 @@ namespace GUI.ViewModels
             lingusticSummarization.Quantifiers = quants;
             lingusticSummarization.Summarizators = summs;
             lingusticSummarization.generateMixedLinqusticObjects();
-
             var results = lingusticSummarization.results(_t1Threshold);
             string workingDirectory = Environment.CurrentDirectory;
             string filepath = Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\results.txt";
             SaveAllData.SaveToFile(results, filepath);
+            isDone = "Skonczone";
         }
     }
 }

@@ -29,7 +29,7 @@ namespace LogicTests
             crimesList.Add(c2);
             crimesList.Add(c3);
             membershipFunction = new TriangleMembershipFunction(5, 7, 6);
-            Summarizator s1 = new Summarizator("duzo zabojstw", "Number Of Killed", membershipFunction, 5, 7);
+            Summarizator s1 = new Summarizator("duzo zabojstw", "Number of Killed", membershipFunction);
             
         }
         [TestMethod]

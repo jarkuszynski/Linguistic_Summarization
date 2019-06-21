@@ -2,32 +2,38 @@
 # attrubuteToChoose: Number of Killed, Number of Injured, Gun status, Average Age, Age Group, Gender Fraction, Participant Type, Horizontal, Vertical, Period
 #function type to choose trian/trap
 #function params according to function type: trian a;m;b, trap a;b;c;d
-summarizators;and
-ogólnie zabojstw;Number of Killed;trap;1,2,7,8;0;8
-mało zabojstw;Number of Killed;trap;1,2,2,3;0;8
-summarizators;or
-mało rannych;Number of Injured;trap;1,2,2,3;0;14
+summarizators
+dużo zabójstw;Number of Killed;trap;4,3,8,8
+mało zabójstw;Number of Killed;trap;1,2,3,3
+dużo poszkodowanych;Number of Injured;trap;4,7,14,14
+mało poszkodowanych;Number of Injured;trap;0,0,2,4
+dużo znanego pochodzenia;Gun status;trap;0.1,0.2,0.3,0.3
+dużo nieznanego pochodzenia;Gun status;trap;0.5,0.6,0.9,0.9
+średnia wieku między 30 a 40 rokiem życia;Average Age;trap;30,30,40,40
+średnia wieku między 10 a 20 rokiem życia;Average Age;trap;10,10,20,20
+średnia wieku między 10 a 40 rokiem życia;Average Age;trap;10,10,40,40
 qualifiers
-na polnocy1;Vertical;trian;10,57,57;25;49
-na polnocy2;Vertical;trian;0,57,57;25;49
-na polnocy3;Vertical;trian;5,57,57;25;49
-na polnocy4;Vertical;trian;7,57,57;25;49
-na polnocy5;Vertical;trian;10,40,40;25;49
-na południu6;Vertical;trian;0,25,25;25;35
-na zachodzie7;Horizontal;trian;10,24,24;0;98
+W północnej częsci kraju;Vertical;trian;35.65,71.3,71.3
+W południowej częsci kraju;Vertical;trian;0,35.65,0
+na południu;Vertical;trap;0,0,10,10
+na północy;Vertical;trap;65,65,71.3,71.3
+W zachodniej części kraju;Horizontal;trian;33.63555,67.2711,67.2711
+na zachodzie;Horizontal;trap;57,57,67.2711,67.2711
+We wschodniej części kraju;Horizontal;trian;0,33.63555,0
+na wschodzie;Horizontal;trap;0,0,15,15
 quantifiers;relative
-Około połowa;nan;trap;0.3,0.4,0.6,0.7;0;100
-Więcej niż połowa;nan;trian;0.5,1.0,0.8;0;100
-Mniej niż połowa;nan;trian;0.0,0.4,0.25;0;100
+Około połowa[trap];nan;trap;0.3,0.4,0.6,0.7
+Około połowa[trian];nan;trian;0.4,0.6,0.5
+Więcej niż połowa;nan;trian;0.7,1.0,1.0
+Mniej niż połowa;nan;trian;0.0,0.3,0.15
 quantifiers;absolute
-Około 5000;nan;trian;100,500,300;0;100
-Około 60000;nan;trian;1100,2200,1700;0;100
-Około 50000;nan;trian;1000,5000,3300;0;100
-Około 40000;nan;trian;900,4900,2700;0;100
-Około 30000;nan;trian;800,4000,2000;0;100
-Około 20000;nan;trian;500,2000,1000;0;100
-Około 10000;nan;trian;200,800,600;0;100
-Około 2000;nan;trian;50,150,70;0;100
-Około 7000;nan;trian;120,700,200;0;100
-Około 500;nan;trian;40,100,60;0;100
-Około 100;nan;trian;10,40,30;0;100
+Około 5000;nan;trian;4000,6000,5000
+Około 60000;nan;trian;57000,63000,60000
+Około 50000;nan;trian;48000,52000,50000
+Około 40000;nan;trian;36000,44000,40000
+Około 30000[trap];nan;trap;28000,30000,30000,32000
+Około 20000[trap];nan;trap;18000,20000,20000,22000
+Około 10000;nan;trian;8000,12000,10000
+Około 2000;nan;trian;1800,2200,2000
+Około 500;nan;trian;450,550,500
+Około 100;nan;trian;80,120,100
