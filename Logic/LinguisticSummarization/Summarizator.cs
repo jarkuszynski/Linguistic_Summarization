@@ -13,7 +13,6 @@ namespace Logic.LinguisticSummarization
         public Summarizator(string description, string attributeName, IMembershipFunction membershipFunction) : base(description, membershipFunction)
         {
             AttributeName = attributeName;
-            X = 1.0 * getSummarizatorOrQualifierMinAndMaximalValue(attributeName).Item2 - getSummarizatorOrQualifierMinAndMaximalValue(attributeName).Item1;
         }
     }
 }

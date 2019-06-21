@@ -62,9 +62,9 @@ namespace LogicTests
         public void PerformCalculationBetweenSummarizators_AND()
         {
             membershipFunction = new TriangleMembershipFunction(5, 7, 6);
-            Summarizator s1 = new Summarizator("duzo zabojstw", "Number of Killed", membershipFunction, 5, 7);
+            Summarizator s1 = new Summarizator("duzo zabojstw", "Number of Killed", membershipFunction);
             membershipFunction = new TriangleMembershipFunction(4, 6, 5);
-            Summarizator s2 = new Summarizator("sporo zabojstw", "Number of Killed", membershipFunction, 5, 7);
+            Summarizator s2 = new Summarizator("sporo zabojstw", "Number of Killed", membershipFunction);
             Summarizators = new List<Summarizator>();
             Summarizators.Add(s1);
             Summarizators.Add(s2);
@@ -76,9 +76,9 @@ namespace LogicTests
         public void PerformCalculationBetweenSummarizators_OR()
         {
             membershipFunction = new TriangleMembershipFunction(5, 7, 6);
-            Summarizator s1 = new Summarizator("duzo zabojstw", "Number of Killed", membershipFunction, 5, 7);
+            Summarizator s1 = new Summarizator("duzo zabojstw", "Number of Killed", membershipFunction);
             membershipFunction = new TriangleMembershipFunction(4, 6, 5);
-            Summarizator s2 = new Summarizator("sporo zabojstw", "Number of Killed", membershipFunction, 5, 7);
+            Summarizator s2 = new Summarizator("sporo zabojstw", "Number of Killed", membershipFunction);
             Summarizators = new List<Summarizator>();
             Summarizators.Add(s1);
             Summarizators.Add(s2);
