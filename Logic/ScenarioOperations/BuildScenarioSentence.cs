@@ -48,8 +48,10 @@ namespace Logic.ScenarioOperations
                 stringBuilder.Append("[T9: " + Math.Truncate(allTResults.T9 * 1000.0) / 1000.0 + "] ");
                 stringBuilder.Append("[T10: " + Math.Truncate(allTResults.T10 * 1000.0) / 1000.0 + "] ");
                 stringBuilder.Append("[T11: " + Math.Truncate(allTResults.T11 * 1000.0) / 1000.0 + "] ");
+                stringBuilder.Append("[T1T11: " + Math.Truncate(allTResults.T1T11 * 1000.0) / 1000.0 + "] ");
             }
-            stringBuilder.Append("[T1T11: " + Math.Truncate(allTResults.T1T11 * 1000.0) / 1000.0 + "] ");
+
+            stringBuilder.Append("[T1T8: " + Math.Truncate(allTResults.T1T8 * 1000.0) / 1000.0 + "] ");
 
             return stringBuilder.ToString();
         }
@@ -67,6 +69,7 @@ namespace Logic.ScenarioOperations
             allTValues.T9 = CalculateT9();
             allTValues.T10 = CalculateT10();
             allTValues.T11 = CalculateT11();
+            allTValues.T1T8 = CalculateT1T8(allTValues);
             allTValues.T1T11 = CalculateT1T11(allTValues);
             return allTValues;
 
@@ -227,6 +230,14 @@ namespace Logic.ScenarioOperations
             if (SingleLingusticObject.Qualifier != null)
                 return 2.0 * Math.Pow(1.0 / 2.0, 1.0);
             return 0.0;
+        }
+
+        private double CalculateT1T8(AllTValues allTValues)
+        {
+            return
+                (allTValues.T1 + allTValues.T2 + allTValues.T3 +
+                allTValues.T4 + allTValues.T5 + allTValues.T6 +
+                allTValues.T7 + allTValues.T8) * (1.0 / 8.0);
         }
 
         private double CalculateT1T11(AllTValues allTValues)
