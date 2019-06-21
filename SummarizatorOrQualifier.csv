@@ -24,19 +24,25 @@ W zachodniej części kraju;Horizontal;trian;33.63555,67.2711,67.2711
 na zachodzie;Horizontal;trap;57,57,67.2711,67.2711
 We wschodniej części kraju;Horizontal;trian;0,33.63555,0
 na wschodzie;Horizontal;trap;0,0,15,15
-quantifiers;relative
+W centrum kraju pionowo;Horizontal;trap;28,33,38,45
+W centrum kraju poziomo;Vertical;trap;25,32,37,42
+Dawnej daty;Period;trian;0,700,0
+Średnio dawno;Period;trap;500,700,1200,1400
+Teraźniejsze;Period;train;1300,1915,1915
+quantifiers;relative;;
 Około połowa[trap];nan;trap;0.3,0.4,0.6,0.7
-Około połowa[trian];nan;trian;0.4,0.6,0.5
-Więcej niż połowa;nan;trian;0.7,1.0,1.0
-Mniej niż połowa;nan;trian;0.0,0.3,0.15
-quantifiers;absolute
-Około 5000;nan;trian;4000,6000,5000
-Około 60000;nan;trian;57000,63000,60000
-Około 50000;nan;trian;48000,52000,50000
-Około 40000;nan;trian;36000,44000,40000
-Około 30000[trap];nan;trap;28000,30000,30000,32000
-Około 20000[trap];nan;trap;18000,20000,20000,22000
+Więcej niż połowa;nan;trian;0.65,1.0,1.0
+Mniej niż połowa;nan;trian;0.0,0.35,0.0
+quantifiers;absolute;;
 Około 10000;nan;trian;8000,12000,10000
 Około 2000;nan;trian;1800,2200,2000
+Około 1800;nan;trap;1600,1750,1850,1900
 Około 500;nan;trian;450,550,500
-Około 100;nan;trian;80,120,100
+Około 600;nan;trap;500,550,650,700
+Około 800;nan;trap;600,700,900,1000
+Około 1000;nan;trian;900,1100,1000
+Około 1100;nan;trian;1050,1150,1100
+Około 12000;nan;trap;11000,11500,12500,13000
+Około 14000;nan;trian;12500,15500,14000
+Około 22000;nan;trap;21000,21500,22500,23000
+Około 20000[trap];nan;trap;18000,20000,20000,22000
