@@ -50,8 +50,10 @@ namespace Logic.ScenarioOperations
                 stringBuilder.Append("[T11: " + Math.Truncate(allTResults.T11 * 1000.0) / 1000.0 + "] ");
                 stringBuilder.Append("[T1T11: " + Math.Truncate(allTResults.T1T11 * 1000.0) / 1000.0 + "] ");
             }
-
-            stringBuilder.Append("[T1T8: " + Math.Truncate(allTResults.T1T8 * 1000.0) / 1000.0 + "] ");
+            else
+            {
+                stringBuilder.Append("[T1T8: " + Math.Truncate(allTResults.T1T8 * 1000.0) / 1000.0 + "] ");
+            }
 
             return stringBuilder.ToString();
         }
