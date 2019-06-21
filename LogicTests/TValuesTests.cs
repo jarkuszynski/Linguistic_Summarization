@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CsvDataGetter.Model;
 using Logic.LinguisticSummarization;
 using Logic.MembershipFunctions;
+using Logic.Operations;
 using Logic.ScenarioOperations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,6 +15,7 @@ namespace LogicTests
         List<SingleCrimeInfo> crimesList;
         BuildScenarioSentence buildScenarioSentence;
         IMembershipFunction membershipFunction;
+        List<Summarizator> Summarizators;
 
         [TestInitialize]
         public void Initialize()
@@ -24,7 +26,7 @@ namespace LogicTests
             SingleCrimeInfo c2 = new SingleCrimeInfo();
             c2.Killed = 6;
             SingleCrimeInfo c3 = new SingleCrimeInfo();
-            c2.Killed = 7;
+            c3.Killed = 7;
             crimesList.Add(c1);
             crimesList.Add(c2);
             crimesList.Add(c3);
@@ -58,6 +60,33 @@ namespace LogicTests
             Assert.AreEqual(2.0, membershipFunction.Cardinality);
         }
 
+        [TestMethod]
+        public void PerformCalculationBetweenSummarizators_AND()
+        {
+            membershipFunction = new TriangleMembershipFunction(5, 7, 6);
+            Summarizator s1 = new Summarizator("duzo zabojstw", "Number of Killed", membershipFunction, 5, 7);
+            membershipFunction = new TriangleMembershipFunction(4, 6, 5);
+            Summarizator s2 = new Summarizator("sporo zabojstw", "Number of Killed", membershipFunction, 5, 7);
+            Summarizators = new List<Summarizator>();
+            Summarizators.Add(s1);
+            Summarizators.Add(s2);
+            double actual = FuzzySetOperations.PerformCalculationsBetweenGivenSummarizators(Summarizators, crimesList[1], Logic.OperationType.And);
+            Assert.AreEqual(0.0, actual);
+        }
+
+        [TestMethod]
+        public void PerformCalculationBetweenSummarizators_OR()
+        {
+            membershipFunction = new TriangleMembershipFunction(5, 7, 6);
+            Summarizator s1 = new Summarizator("duzo zabojstw", "Number of Killed", membershipFunction, 5, 7);
+            membershipFunction = new TriangleMembershipFunction(4, 6, 5);
+            Summarizator s2 = new Summarizator("sporo zabojstw", "Number of Killed", membershipFunction, 5, 7);
+            Summarizators = new List<Summarizator>();
+            Summarizators.Add(s1);
+            Summarizators.Add(s2);
+            double actual = FuzzySetOperations.PerformCalculationsBetweenGivenSummarizators(Summarizators, crimesList[1], Logic.OperationType.Or);
+            Assert.AreEqual(1.0, actual);
+        }
 
 
     }
