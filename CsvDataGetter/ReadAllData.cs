@@ -122,28 +122,6 @@ namespace CsvDataGetter
             List<SingleCrimeInfo> sortedCollection = crimeInfoCollection.OrderBy(d => d.Date).ToList();
             SingleCrimeInfo.BeginDate = sortedCollection.First().Date;
             SingleCrimeInfo.EndDate = sortedCollection.Last().Date;
-            double ile_zabitych = 0;
-            double ile_rannych = 0;
-            double roznicaHorizontal = 0;
-            double roznicaVertical = 0;
-            double sredniaWiekuSuma = 0;
-            double najwieksza_sredniaWieku = crimeInfoCollection.Max(c => c.GetAverageParticipantsAge());
-            double najnizsza_sredniaWieku = crimeInfoCollection.Min(c => c.GetAverageParticipantsAge());
-            double najwiekszaRoznicaDni = crimeInfoCollection.Max(c => c.GetDatePeriodFraction());
-            double najnizszaRoznicaDni = crimeInfoCollection.Min(c => c.GetDatePeriodFraction());
-            double największaRoznicaVertical = crimeInfoCollection.Max(c => c.GetVerticalGeoSide());
-            double najnizszaRoznicaVertical = crimeInfoCollection.Min(c => c.GetVerticalGeoSide());
-            double NajwyzszaRoznicaHorizonal = crimeInfoCollection.Max(c => c.GetHorizontalGeoSide());
-            double najnizszaRoznicaHorizonal = crimeInfoCollection.Min(c => c.GetHorizontalGeoSide());
-            crimeInfoCollection.Select(c => ile_zabitych += c.Killed);
-            foreach (var crime in crimeInfoCollection)
-            {
-                ile_rannych += crime.Injured;
-                ile_zabitych += crime.Killed;
-                roznicaHorizontal += crime.GetHorizontalGeoSide();
-                roznicaVertical += crime.GetVerticalGeoSide();
-                sredniaWiekuSuma += crime.GetAverageParticipantsAge();
-            }
             return crimeInfoCollection;
         }
 
