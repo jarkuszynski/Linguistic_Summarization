@@ -52,7 +52,7 @@ namespace CsvDataGetter.Model
                 case "Vertical":
                     return GetVerticalGeoSide();
                 case "Period":
-                    return GetDatePeriodFraction();
+                    return GetDatePeriodFromFirstCrime();
                 default:
                     throw new ArgumentNullException("property name must be provided or given is invalid");
             }
@@ -74,7 +74,7 @@ namespace CsvDataGetter.Model
             return availableProperties;
         }
 
-        public double GetDatePeriodFraction()
+        public double GetDatePeriodFromFirstCrime()
         {
             return (Date - BeginDate).TotalDays;
         }
