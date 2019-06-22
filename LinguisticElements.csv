@@ -4,17 +4,17 @@
 #function params according to function type: trian a;m;b, trap a;b;c;d
 summarizators
 dużo zabójstw;Number of Killed;trap;3,4,8,8
-mało zabójstw;Number of Killed;trap;1,2,4,4
+mało zabójstw;Number of Killed;trap;1,2,3,4
 dużo poszkodowanych;Number of Injured;trap;4,7,14,14
 mało poszkodowanych;Number of Injured;trap;0,0,4,6
 dużo znanego pochodzenia;Gun status;trap;0.1,0.2,0.5,0.6
 dużo nieznanego pochodzenia;Gun status;trap;0.5,0.6,0.9,0.9
 średnia wieku między 30 a 40 rokiem życia;Average Age;trap;30,30,40,40
-średnia wieku między 10 a 35 rokiem życia;Average Age;10,10,35,35
-dużo więcej nieletnich biorących udział w przestępstwie niż pełnoletnich;Age Group;trap;0,0,0.4,0.6
-dużo więcej pełnoletnich biorących udział w przestępstwie niż niepełnoletnich;Age Group;trap;0.4,0.5,0.9,0.9
-większy stosunek mężczyzn niż kobiet biorących udział w przestępstwie;Gender Fraction;trap;0.4,0.5,0.9,0.9
-większy stosunek kobiet niż mężczyzn biorących udział w przestępstwie;Gender Fraction;trap;0,0,0.4,0.6
+średnia wieku między 10 a 35 rokiem życia;Average Age;trap;10,10,35,35
+dużo więcej nieletnich;Age Group;trap;0,0,0.4,0.6
+dużo więcej pełnoletnich;Age Group;trap;0.4,0.5,0.9,0.9
+większy stosunek mężczyzn niż kobiet;Gender Fraction;trap;0.4,0.5,0.9,0.9
+większy stosunek kobiet niż mężczyzn;Gender Fraction;trap;0,0,0.4,0.6
 qualifiers
 W północnej częsci kraju;Vertical;trian;35.65,71.3,71.3
 W południowej częsci kraju;Vertical;trian;0,35.65,0
@@ -28,12 +28,12 @@ W centrum kraju pionowo;Horizontal;trap;28,33,38,45
 W centrum kraju poziomo;Vertical;trap;25,32,37,42
 Dawnej daty;Period;trian;0,700,0
 Średnio dawno;Period;trap;500,700,1200,1400
-Teraźniejsze;Period;train;1300,1915,1915
-quantifiers;relative;;
+Teraźniejsze;Period;trian;1300,1915,1915
+quantifiers;relative
 Około połowa[trap];nan;trap;0.3,0.4,0.6,0.7
 Więcej niż połowa;nan;trian;0.65,1.0,1.0
 Mniej niż połowa;nan;trian;0.0,0.35,0.0
-quantifiers;absolute;;
+quantifiers;absolute
 Około 10000;nan;trian;8000,12000,10000
 Około 2000;nan;trian;1800,2200,2000
 Około 1800;nan;trap;1600,1750,1850,1900
@@ -45,4 +45,4 @@ Około 1100;nan;trian;1050,1150,1100
 Około 12000;nan;trap;11000,11500,12500,13000
 Około 14000;nan;trian;12500,15500,14000
 Około 22000;nan;trap;21000,21500,22500,23000
-Około 20000[trap];nan;trap;18000,20000,20000,22000
+Około 20000[trap];nan;trap;18000,20000,21000,22000

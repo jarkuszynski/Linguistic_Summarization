@@ -45,7 +45,7 @@ namespace CsvDataGetter
             List<Qualifier> qualifiers = new List<Qualifier>();
             List<Quantifier> quantifiers = new List<Quantifier>();
             string workingDirectory = Environment.CurrentDirectory;
-            string filepath = Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\SummarizatorOrQualifier.csv";
+            string filepath = Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\LinguisticElements.csv";
             using (TextFieldParser csvParser = new TextFieldParser(filepath))
             {
                 csvParser.CommentTokens = new[] { "#" };
