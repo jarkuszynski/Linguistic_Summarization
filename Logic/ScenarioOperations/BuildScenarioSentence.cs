@@ -30,7 +30,7 @@ namespace Logic.ScenarioOperations
         {
             AllTValues allTResults = CalculateAllSummarizationValues();
             StringBuilder stringBuilder = new StringBuilder();
-            if (allTResults.T1 <= Threshold || allTResults.T1 >= 1)
+            if (allTResults.T1 < Threshold || allTResults.T1 > 1)
             {
                 return string.Empty;
             }

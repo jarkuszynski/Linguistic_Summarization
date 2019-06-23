@@ -7,7 +7,7 @@
              xmlns:vm="clr-namespace:GUI.ViewModels"
              xmlns:local="clr-namespace:GUI.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="800" d:DesignWidth="800">
     <UserControl.Resources>
         <DataTemplate x:Name="membershipTemplate" DataType="{x:Type vm:MembershipFunctionViewModel}">
             <local:MembershipFunctionView/>

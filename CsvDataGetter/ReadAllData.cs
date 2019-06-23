@@ -11,12 +11,13 @@ namespace CsvDataGetter
 {
     public class ReadAllData
     {
-        public static int numberOfRows = 55944;
+        public static int numberOfRows = 21000;
         public static List<SingleCrimeInfo> ReadData()
         {
             CrimeInfoDBContext dBContext = new CrimeInfoDBContext();
             DataTable dataSet = dBContext.OpenConnection();
             List<SingleCrimeInfo> crimeInfoCollection = new List<SingleCrimeInfo>();
+            int numberOfAdded = 0;
             foreach (DataRow dataSetRow in dataSet.Rows)
             {
                 SingleCrimeInfo simpleCrime = new SingleCrimeInfo();
@@ -115,13 +116,13 @@ namespace CsvDataGetter
                 {
                     simpleCrime.ParticipantsInfo.Add(new ParticipantInfo(int.Parse(partAge[i]), partAgeGroup[i], partGender[i], partStatusList[i], partType[i]));
                 }
-
+                numberOfAdded++;
                 crimeInfoCollection.Add(simpleCrime);
+                if (numberOfAdded == numberOfRows)
+                {
+                    return crimeInfoCollection;
+                }
             }
-
-            List<SingleCrimeInfo> sortedCollection = crimeInfoCollection.OrderBy(d => d.Date).ToList();
-            SingleCrimeInfo.BeginDate = sortedCollection.First().Date;
-            SingleCrimeInfo.EndDate = sortedCollection.Last().Date;
             return crimeInfoCollection;
         }
 

@@ -106,7 +106,7 @@ namespace Logic
         {
             List<List<Summarizator>> SummarizatorsCombinations = new List<List<Summarizator>>();
             bool shouldAdd = true;
-            for (int i = 1; i <= Summarizators.Count; i++)
+            for (int i = 1; i <= 2; i++)
             {
                 Combinatorics.Collections.Combinations<Summarizator> c = new Combinatorics.Collections.Combinations<Summarizator>(Summarizators, i);
                 foreach (List<Summarizator> v in c)
